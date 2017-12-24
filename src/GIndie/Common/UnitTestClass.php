@@ -18,8 +18,11 @@ namespace GIndie\Common;
  * @version GI-CMMN.00.00 2017-12-24
  * @edit GI-CMMN.00.01
  * - Sources from external project SG-DML
+ * @edit GI-CMMN.00.02
+ * - Moved class, renamed class, implements GIInterface
+ * - Display error when not implementing a method defined in the class.
  */
-abstract class UTClass
+abstract class UnitTestClass implements \GIndie\Common\UnitTestClass\GIInterface
 {
 
     /**
@@ -33,6 +36,15 @@ abstract class UTClass
         "</div>\n";
         $ignoreFunctions = \get_class_methods(__CLASS__);
         $testFunctions = \get_class_methods(\get_called_class());
+        foreach (\get_class_methods($this->classname()) as $method) {
+            switch (false)
+            {
+                case (\strcmp($method, "__toString") != 0):
+                    break;
+                case \in_array($method, $testFunctions):
+                    echo "<span style=\"color:red; font-weight: bolder;\"'>" . $method . " must be declared in UnitTestClass</span><br>";
+            }
+        }
         foreach ($testFunctions as $function) {
             \in_array($function, $ignoreFunctions) ?: static::{$function}();
         }
@@ -51,8 +63,8 @@ abstract class UTClass
      */
     public static function execStrCmp($expected, $result)
     {
-        echo "<div style=\"font-size: 1.1em;\">" .
-        debug_backtrace()[1]['function'] . "::";
+        echo "<div style = \"font-size: 1.1em;\">" .
+        \debug_backtrace()[1]['function'] . "::";
         switch (\strcmp($expected, $result))
         {
             case 0:
@@ -61,8 +73,8 @@ abstract class UTClass
             default:
                 echo "<span style=\"color:red; font-weight: bolder;\"'>Error:</span></div>";
                 echo "<br/><span style=\"font-size: 1.05em;\">Expected:</span><pre>" .
-                htmlentities($expected) . "</pre>" .
-                "<span style=\"font-size: 1.05em;\">Resutl:</span><pre>" . htmlentities($result) .
+                \htmlentities($expected) . "</pre>" .
+                "<span style=\"font-size: 1.05em;\">Resutl:</span><pre>" . \htmlentities($result) .
                 "</pre><br />\n <------------------------>";
                 break;
         }
@@ -81,7 +93,7 @@ abstract class UTClass
     public static function execExceptionCmp(\Exception $exception = null)
     {
         echo "<div style=\"font-size: 1.1em;\">" .
-        debug_backtrace()[1]['function'] . "::";
+        \debug_backtrace()[1]['function'] . "::";
         switch (true)
         {
             case \is_null($exception):
