@@ -19,23 +19,27 @@ namespace GIndie\INIHandler;
  * @version GI-CMMN.00.00
  * @edit GI-CMMN.00.01
  * - Clase prototipo
+ * @edit GI-CMMN.00.02
+ * - Int constant. Updated __construct()
  */
 class Exception extends \GIndie\Exception
 {
 
     /**
      * 
-     * @var string
+     * @var int
      * @since GI-CMMN.00.01
+     * @edit GI-CMMN.00.02
      */
-    const FILE_NOT_FOUND = "FILE_NOT_FOUND";
+    const FILE_NOT_FOUND = 0;
 
     /**
      * 
-     * @var string
+     * @var int
      * @since GI-CMMN.00.01
+     * @edit GI-CMMN.00.02
      */
-    const REQUIRED_VAR = "REQUIRED_VAR";
+    const REQUIRED_VAR = 1;
 
     /**
      * 
@@ -43,16 +47,19 @@ class Exception extends \GIndie\Exception
      * @param mixed|null $param1
      * @param mixed|null $param2
      * @since GI-CMMN.00.01
+     * @edit GI-CMMN.00.02
      */
     public function __construct($constant, $param1 = null, $param2 = null)
     {
+        $class = new ReflectionClass(__CLASS__);
+        $constants = array_flip($class->getConstants());
         switch ($constant)
         {
             case static::FILE_NOT_FOUND:
-                $message = $constant . ": " . $param1;
+                $message = $constants[$constant] . ":" . $param1;
                 break;
             case static::REQUIRED_VAR:
-                $message = $constant . $param2 . " ON FILE " . $param1;
+                $message = $constants[$constant] . ":" . $param2 . " ON FILE " . $param1;
                 break;
             default:
                 $message = "UNDEFINED_EXCEPTION:" . $constant;

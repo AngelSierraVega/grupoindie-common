@@ -24,6 +24,8 @@ namespace GIndie;
  * @edit GI-CMMN.00.03
  * - Abstract class
  * - Implemented custom \GIndie\INIHandler\Exception in method: readINI(), validateVars()
+ * @edit GI-CMMN.00.04
+ * - Replaced static::$ini_data with self::$ini_data 
  */
 abstract class INIHandler implements \GIndie\INIHandler\InterfaceINIHandler
 {
@@ -37,8 +39,8 @@ abstract class INIHandler implements \GIndie\INIHandler\InterfaceINIHandler
      */
     public static function getValue($varname)
     {
-        \is_array(static::$ini_data[static::fileName()]) ?: static::readINI();
-        return static::$ini_data[static::fileName()][$varname];
+        isset(self::$ini_data[static::fileName()]) ?: static::readINI();
+        return self::$ini_data[static::fileName()][$varname];
     }
 
     /**
@@ -72,11 +74,11 @@ abstract class INIHandler implements \GIndie\INIHandler\InterfaceINIHandler
     {
         if (\session_status() === \PHP_SESSION_ACTIVE) {
             $_SESSION["ini_data"][static::fileName()] = $data;
-            static::$ini_data[static::fileName()] = &$_SESSION["ini_data"][static::fileName()];
+            self::$ini_data[static::fileName()] = &$_SESSION["ini_data"][static::fileName()];
         } else {
-            static::$ini_data[static::fileName()] = $data;
+            self::$ini_data[static::fileName()] = $data;
         }
-        return static::$ini_data[static::fileName()];
+        return self::$ini_data[static::fileName()];
     }
 
     /**
