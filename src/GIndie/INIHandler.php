@@ -21,8 +21,11 @@ namespace GIndie;
  * - getValue(): Method ini_get renamed to getValue due to PSR-1 violation.
  * - Deleted private static vars: $ini_filename, $ini_required_vars
  * - Implemented \GIndie\INIHandler\InterfaceINIHandler in class
+ * @edit GI-CMMN.00.03
+ * - Abstract class
+ * - Implemented custom \GIndie\INIHandler\Exception in method: readINI(), validateVars()
  */
-class INIHandler implements \GIndie\INIHandler\InterfaceINIHandler
+abstract class INIHandler implements \GIndie\INIHandler\InterfaceINIHandler
 {
 
     /**
@@ -40,25 +43,25 @@ class INIHandler implements \GIndie\INIHandler\InterfaceINIHandler
 
     /**
      * 
-     * @throws \Exception
+     * @throws \GIndie\INIHandler\Exception
      * @since GI-CMMN.00.01
      * 
      * @return array The settings are returned as an associative array on success,
      * and <b>FALSE</b> on failure.
      * @edit GI-CMMN.00.02
+     * @edit GI-CMMN.00.03
      */
     private static function readINI()
     {
         $pathToFile = \dirname(\Phar::running(false)) . "/" . static::fileName() . ".ini";
         if (!\file_exists($pathToFile)) {
-            throw new \Exception("No existe archivo: " . $pathToFile);
+            throw new \GIndie\INIHandler\Exception(\GIndie\INIHandler\Exception::FILE_NOT_FOUND, $pathToFile);
         }
         return static::validateVars(\parse_ini_file($pathToFile));
     }
 
     /**
      * 
-     * @throws \Exception
      * @since GI-CMMN.00.01
      * 
      * @return array The settings are returned as an associative array on success,
@@ -83,12 +86,13 @@ class INIHandler implements \GIndie\INIHandler\InterfaceINIHandler
      * 
      * @return array The settings are returned as an associative array on success,
      * and <b>FALSE</b> on failure.
+     * @edit GI-CMMN.00.03
      */
     private static function validateVars(array $data)
     {
         foreach (static::requiredVars() as $varname) {
             if (!\array_key_exists($varname, $data)) {
-                throw new \Exception("Error en archivo INI \"" . static::fileName() . "\". Variable no definida '" . $varname . "'");
+                throw new \GIndie\INIHandler\Exception(\GIndie\INIHandler\Exception::REQUIRED_VAR, static::fileName(),$varname);
             }
         }
         return static::storeINI($data);
@@ -99,6 +103,6 @@ class INIHandler implements \GIndie\INIHandler\InterfaceINIHandler
      * @var array 
      * @since GI-CMMN.00.01
      */
-    private static $ini_data;
+    private static $ini_data = [];
 
 }
