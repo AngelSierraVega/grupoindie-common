@@ -16,20 +16,26 @@ namespace GIndie;
  * @author Angel Sierra Vega <angel.sierra@grupoindie.com>
  * @version GI-CMMN.00.00
  * @edit GI-CMMN.00.01
- * - Clase copiada de proyecto externo DBHandler
+ * - Copied class from external project DBHandler
+ * @edit GI-CMMN.00.02
+ * - getValue(): Method ini_get renamed to getValue due to PSR-1 violation.
+ * - Deleted private static vars: $ini_filename, $ini_required_vars
+ * - Implemented \GIndie\INIHandler\InterfaceINIHandler in class
  */
-class INIHandler
+class INIHandler implements \GIndie\INIHandler\InterfaceINIHandler
 {
 
     /**
-     * 
-     * @param string $var
+     * Gets the value from the specified variable
+     * @param string $varname The name of the variable
      * @since GI-CMMN.00.01
+     * @edit GI-CMMN.00.02
+     * @return mixed
      */
-    public static function ini_get($var)
+    public static function getValue($varname)
     {
-        \is_array(static::$ini_data) ?: static::readINI();
-        return static::$ini_data[$var];
+        \is_array(static::$ini_data[static::fileName()]) ?: static::readINI();
+        return static::$ini_data[static::fileName()][$varname];
     }
 
     /**
@@ -39,10 +45,11 @@ class INIHandler
      * 
      * @return array The settings are returned as an associative array on success,
      * and <b>FALSE</b> on failure.
+     * @edit GI-CMMN.00.02
      */
     private static function readINI()
     {
-        $pathToFile = \dirname(\Phar::running(false)) . "/" . static::$ini_filename . ".ini";
+        $pathToFile = \dirname(\Phar::running(false)) . "/" . static::fileName() . ".ini";
         if (!\file_exists($pathToFile)) {
             throw new \Exception("No existe archivo: " . $pathToFile);
         }
@@ -56,16 +63,17 @@ class INIHandler
      * 
      * @return array The settings are returned as an associative array on success,
      * and <b>FALSE</b> on failure.
+     * @edit GI-CMMN.00.02
      */
     private static function storeINI(array $data)
     {
         if (\session_status() === \PHP_SESSION_ACTIVE) {
-            $_SESSION["ini_data"][static::$ini_filename] = $data;
-            static::$ini_data = &$_SESSION["ini_data"][static::$ini_filename];
+            $_SESSION["ini_data"][static::fileName()] = $data;
+            static::$ini_data[static::fileName()] = &$_SESSION["ini_data"][static::fileName()];
         } else {
-            static::$ini_data = $data;
+            static::$ini_data[static::fileName()] = $data;
         }
-        return static::$ini_data;
+        return static::$ini_data[static::fileName()];
     }
 
     /**
@@ -78,9 +86,9 @@ class INIHandler
      */
     private static function validateVars(array $data)
     {
-        foreach (static::$ini_required_vars as $varname) {
+        foreach (static::requiredVars() as $varname) {
             if (!\array_key_exists($varname, $data)) {
-                throw new \Exception("Error en archivo INI \"" . static::$ini_filename . "\". Variable no definida '" . $varname . "'");
+                throw new \Exception("Error en archivo INI \"" . static::fileName() . "\". Variable no definida '" . $varname . "'");
             }
         }
         return static::storeINI($data);
@@ -92,19 +100,5 @@ class INIHandler
      * @since GI-CMMN.00.01
      */
     private static $ini_data;
-
-    /**
-     *
-     * @var string 
-     * @since GI-CMMN.00.01
-     */
-    private static $ini_filename = "DBHandler";
-
-    /**
-     *
-     * @var array 
-     * @since GI-CMMN.00.01
-     */
-    private static $ini_required_vars = ["server_prefix", "host", "main_username", "main_password"];
 
 }
