@@ -51,8 +51,8 @@ class Exception extends \GIndie\Exception
      */
     public function __construct($constant, $param1 = null, $param2 = null)
     {
-        $class = new ReflectionClass(__CLASS__);
-        $constants = array_flip($class->getConstants());
+        $class = new \ReflectionClass(__CLASS__);
+        $constants = \array_flip($class->getConstants());
         switch ($constant)
         {
             case static::FILE_NOT_FOUND:

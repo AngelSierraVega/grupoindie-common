@@ -14,6 +14,8 @@ namespace GIndie\INIHandler;
  *
  * @author Angel Sierra Vega <angel.sierra@grupoindie.com>
  * @version GI-CMMN.00.01
+ * @edit GI-CMMN.00.02
+ * - pathToFile() added
  */
 interface InterfaceINIHandler
 {
@@ -31,4 +33,10 @@ interface InterfaceINIHandler
      * @return array
      */
     public static function requiredVars();
+
+    /**
+     * @since GI-CMMN.00.02
+     * @return string
+     */
+    public static function pathToFile();
 }
