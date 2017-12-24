@@ -26,6 +26,8 @@ namespace GIndie;
  * - Implemented custom \GIndie\INIHandler\Exception in method: readINI(), validateVars()
  * @edit GI-CMMN.00.04
  * - Replaced static::$ini_data with self::$ini_data 
+ * @edit GI-CMMN.00.05
+ * - Method readINI(): static::pathToFile() used
  */
 abstract class INIHandler implements \GIndie\INIHandler\InterfaceINIHandler
 {
@@ -52,14 +54,14 @@ abstract class INIHandler implements \GIndie\INIHandler\InterfaceINIHandler
      * and <b>FALSE</b> on failure.
      * @edit GI-CMMN.00.02
      * @edit GI-CMMN.00.03
+     * @edit GI-CMMN.00.05
      */
     private static function readINI()
     {
-        $pathToFile = \dirname(\Phar::running(false)) . "/" . static::fileName() . ".ini";
-        if (!\file_exists($pathToFile)) {
-            throw new \GIndie\INIHandler\Exception(\GIndie\INIHandler\Exception::FILE_NOT_FOUND, $pathToFile);
+        if (!\file_exists(static::pathToFile())) {
+            throw new \GIndie\INIHandler\Exception(\GIndie\INIHandler\Exception::FILE_NOT_FOUND, static::pathToFile());
         }
-        return static::validateVars(\parse_ini_file($pathToFile));
+        return static::validateVars(\parse_ini_file(static::pathToFile()));
     }
 
     /**
