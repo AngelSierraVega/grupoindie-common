@@ -21,13 +21,55 @@ namespace GIndie\Common;
  * @edit GI-CMMN.00.02
  * - Moved class, renamed class, implements GIInterface
  * - Display error when not implementing a method defined in the class.
+ * @edit GI-CMMN.00.03
+ * - Created method's: validateDocCommentMethod(), handleMethod()
+ * - Updated constructor. Using ReflectionClass to validate a class
  */
 abstract class UnitTestClass implements \GIndie\Common\UnitTestClass\GIInterface
 {
 
     /**
+     * 
+     * @param \ReflectionMethod $Method
+     * @since GI-CMMN.00.03
+     */
+    private static function validateDocCommentMethod(\ReflectionMethod $Method)
+    {
+        echo "<span style=\"font-size: 1.1em; font-weight: bolder;\">" . $Method->name . " </span><br>";
+        $comment = \GIndie\Common\Parser\DocComment::parseFromString($Method->getDocComment());
+        switch (true)
+        {
+            case $Method->isConstructor():
+                break;
+            default:
+                if (isset($comment["return"])) {
+                    echo "<span style=\"font-size: 0.9em;\">@return " . $comment["return"] . "</span><br>";
+                } else {
+                    echo "<span style=\"color:red;\">@return tag must be commented</span><br>";
+                }
+                break;
+        }
+    }
+
+    /**
+     * 
+     * @param \ReflectionMethod $Method
+     * @since GI-CMMN.00.03
+     */
+    private function handleMethod(\ReflectionMethod $Method)
+    {
+        switch ($this->classname())
+        {
+            case $Method->class:
+                static::validateDocCommentMethod($Method);
+                break;
+        }
+    }
+
+    /**
      * @final
      * @since GI.00.01
+     * @edit GI-CMMN.00.03
      */
     final private function __construct()
     {
@@ -36,18 +78,23 @@ abstract class UnitTestClass implements \GIndie\Common\UnitTestClass\GIInterface
         "</div>\n";
         $ignoreFunctions = \get_class_methods(__CLASS__);
         $testFunctions = \get_class_methods(\get_called_class());
+        
+        $reflector = new \ReflectionClass($this->classname());
+        foreach ($reflector->getMethods() as $ReflectionMethod) {//ReflectionMethod::IS_PROTECTED
+            $this->handleMethod($ReflectionMethod);
+        }
         foreach (\get_class_methods($this->classname()) as $method) {
             switch (false)
             {
                 case (\strcmp($method, "__toString") != 0):
                     break;
                 case \in_array($method, $testFunctions):
-                    echo "<span style=\"color:red; font-weight: bolder;\"'>" . $method . " must be declared in UnitTestClass</span><br>";
+                //echo "<span style=\"color:red; font-weight: bolder;\"'>" . $method . " must be declared in UnitTestClass</span><br>";
             }
         }
-        foreach ($testFunctions as $function) {
-            \in_array($function, $ignoreFunctions) ?: static::{$function}();
-        }
+//        foreach ($testFunctions as $function) {
+//            \in_array($function, $ignoreFunctions) ?: static::{$function}();
+//        }
     }
 
     /**
