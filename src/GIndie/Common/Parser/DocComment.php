@@ -17,6 +17,8 @@ namespace GIndie\Common\Parser;
  * @version GI-CMMN.00.00 2017-12-24
  * @edit GI-CMMN.00.01
  *  - Added main functions
+ * @edit GI-CMMN.00.02
+ * - Functional class
  */
 class DocComment
 {
@@ -25,8 +27,9 @@ class DocComment
      *
      * @var type 
      * @since GI-CMMN.00.01
+     * @todo
      */
-    private static $tags = ["param", "return", "since", "edit", "version", "author"];
+    private static $validTags = ["param", "return", "since", "edit", "version", "author"];
 
     /**
      * 
@@ -34,27 +37,32 @@ class DocComment
      * @param type $value
      * @return type
      * @since GI-CMMN.00.01
+     * @edit GI-CMMN.00.02
      */
-    private static function parseTag($tagname, $value)
+    private function parseTag($tagname, $value)
     {
         switch ($tagname)
         {
             case "param":
-                return [$value];
+            case "edit":
+            case "example":
+                $this->parsed[$tagname][] = $value;
                 break;
             default:
-                return ["content" => $value];
+                $this->parsed[$tagname] = $value;
                 break;
         }
     }
 
     /**
+     * Handles triming and concatenation.
      * 
      * @param array $parse
      * @return array
      * @since GI-CMMN.00.01
+     * @edit GI-CMMN.00.02
      */
-    private static function formatParse02(array $parse)
+    private static function data(array $parse)
     {
         $newArray = [];
         foreach ($parse as $value) {
@@ -71,47 +79,74 @@ class DocComment
                 }
             }
         }
-        \var_dump($newArray);
+        //\var_dump($newArray);
         return $newArray;
     }
 
     /**
+     *
+     * @var array 
+     * @since GI-CMMN.00.02
+     */
+    private $data;
+    
+    /**
+     *
+     * @var array 
+     * @since GI-CMMN.00.02
+     */
+    private $parsed;
+
+    /**
+     * 
+     * @param string $comment
+     * @since GI-CMMN.00.02
+     */
+    protected function __construct($comment)
+    {
+        $this->data = static::data(static::prepareString($comment));
+        $this->parse();
+    }
+
+    /**
+     * Removes main characters from DocComment. Explodes the string by line break
      * 
      * @param string $string
      * @return array
      * @since GI-CMMN.00.01
+     * @edit GI-CMMN.00.02
      */
-    private static function formatParse01($string)
+    private static function prepareString($string)
     {
-        $firstArray = \explode("\n", \str_replace("*", "", \trim($string, "/**\n")));
-        \var_dump($firstArray);
-        return $firstArray;
+        return \explode("\n", \str_replace("*", "", \trim($string, "/**\n")));
     }
 
     /**
-     * 
-     * @param array $parse
+     * Creates the final assoc array
      * @return array
      * @since GI-CMMN.00.01
+     * @edit GI-CMMN.00.02
      */
-    private static function formatParse03(array $parse)
+    private function parse()
     {
-        $rtnArray = [];
-        for ($index = 0; $index < \count($parse); $index++) {
+        $this->parsed = [];
+        for ($index = 0; $index < \count($this->data); $index++) {
             switch ($index)
             {
                 case 0:
-                    $rtnArray["description"] = \trim($parse[0]);
+                    $this->parsed["description"] = \trim($this->data[0]);
                     break;
                 default:
-                    $pos = \strpos($parse[$index], " ", 2);
-                    $tagname = \substr($parse[$index], 1, $pos - 1);
-                    $rtnArray[$tagname] = static::parseTag($tagname, \substr($parse[$index], $pos + 1));
+                    $pos = \strpos($this->data[$index], " ", 2);
+                    $tagname = \substr($this->data[$index], 1, $pos - 1);
+                    $this->parseTag($tagname, \substr($this->data[$index], $pos + 1));
+                    break;
+                    //$rtnArray[$tagname] = static::parseTag($tagname, \substr($parse[$index], $pos + 1));
                     break;
             }
         }
-        \var_dump($rtnArray);
-        return $rtnArray;
+        //\var_dump($this->parsed);
+        //return $rtnArray;
     }
 
     /**
@@ -119,10 +154,12 @@ class DocComment
      * @param string $comment
      * @return array
      * @since GI-CMMN.00.01
+     * @edit GI-CMMN.00.02
      */
     public static function parseFromString($comment)
     {
-        return static::formatParse03(static::formatParse02(static::formatParse01($comment)));
+        $tmp = new static($comment);
+        return $tmp->parsed;
     }
 
 }

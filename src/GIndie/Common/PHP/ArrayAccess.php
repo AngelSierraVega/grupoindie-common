@@ -45,7 +45,6 @@ abstract class ArrayAccess implements \ArrayAccess
     {
         $this->data = [];
         foreach ($data as $key => $value) {
-            //var_dump($key);
             static::offsetSet($key, $value);
         }
     }
@@ -53,12 +52,11 @@ abstract class ArrayAccess implements \ArrayAccess
     /**
      * Implementation for interface ArrayAccess
      * 
+     * @param mixed $offset
      * 
-     * @since       GI.01.00
+     * @return boolean <b>TRUE</b> on success or <b>FALSE</b> on failure.
      * 
-     * @param       string $offset.
-     * 
-     * @return      bool True if setted, false otherwise.
+     * @since GI.01.00
      */
     public function offsetExists($offset)
     {
@@ -68,15 +66,12 @@ abstract class ArrayAccess implements \ArrayAccess
     /**
      * Implementation for interface ArrayAccess
      * 
-     * @author      Angel Sierra Vega <angel.sierra@grupoindie.com>
+     * @author Angel Sierra Vega <angel.sierra@grupoindie.com>
      * 
-
+     * @param mixed $offset The offset to retrieve.
+     * @return mixed|null The offsetted data. Null if it's not setted.
      * 
-     * @since       GI.01.00
-     * 
-     * @param       string $offset.
-     * 
-     * @return      mixed|null The offsetted data. Null if it's not setted.
+     * @since GI.01.00
      */
     public function offsetGet($offset)
     {
@@ -86,13 +81,12 @@ abstract class ArrayAccess implements \ArrayAccess
     /**
      * Implementation for interface ArrayAccess
      * 
-     * @since       GI.01.00
+     * @param mixed $offset The offset to assign the value to.
+     * @param mixed $value The value to set.
      * 
+     * @return void
      * 
-     * @param       type $offset.
-     * @param       type $value.
-     * 
-     * @return      void
+     * @since GI.01.00
      */
     public function offsetSet($offset, $value)
     {
@@ -106,12 +100,12 @@ abstract class ArrayAccess implements \ArrayAccess
     /**
      * Implementation for interface ArrayAccess
      * 
-     * @since       GI.01.00
+     * @link http://php.net/manual/en/arrayaccess.offsetunset.php
      * 
+     * @param mixed $offset The offset to unset.
+     * @return void
      * 
-     * @param       string $offset.
-     * 
-     * @return      void
+     * @since GI.01.00
      */
     public function offsetUnset($offset)
     {
