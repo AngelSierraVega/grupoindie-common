@@ -1,7 +1,7 @@
 <?php
 
 /**
- * GICommon - Exception 2017-12-23
+ * GICommon - Exception 
  * @copyright (C) 2017 Angel Sierra Vega. Grupo INDIE.
  *
  * @package GrupoIndie
@@ -16,56 +16,68 @@ namespace GIndie\INIHandler;
  * Description of Exception
  *
  * @author Angel Sierra Vega <angel.sierra@grupoindie.com>
- * @version GI-CMMN.00.00
+ * @version GI-CMMN.00.00 2017-12-23 Created class
  * @edit GI-CMMN.00.01
  * - Clase prototipo
  * @edit GI-CMMN.00.02
  * - Int constant. Updated __construct()
+ * @edit GI-CMMN.00.03 17-12-26
+ * - Moved constants and constructor to \GIndie\Exception
+ * - Created method: requiredVariable(), handleMessage()
+ * - const REQUIRED_VAR moved from GIndie\Exception
  */
 class Exception extends \GIndie\Exception
 {
 
     /**
      * 
-     * @var int
-     * @since GI-CMMN.00.01
-     * @edit GI-CMMN.00.02
-     */
-    const FILE_NOT_FOUND = 0;
-
-    /**
+     * @factory
+     * @since GI-CMMN.00.03
      * 
-     * @var int
-     * @since GI-CMMN.00.01
-     * @edit GI-CMMN.00.02
+     * @param string $pathToFile
+     * @return \GIndie\Exception
      */
-    const REQUIRED_VAR = 1;
-
-    /**
-     * 
-     * @param string $constant
-     * @param mixed|null $param1
-     * @param mixed|null $param2
-     * @since GI-CMMN.00.01
-     * @edit GI-CMMN.00.02
-     */
-    public function __construct($constant, $param1 = null, $param2 = null)
+    public static function requiredVariable($pathToFile, $varname)
     {
-        $class = new \ReflectionClass(__CLASS__);
-        $constants = \array_flip($class->getConstants());
+        return new static(static::REQUIRED_VAR, $pathToFile, $varname);
+    }
+
+    /**
+     * REQUIRED_VAR
+     * 
+     * @var int
+     * @since GI-CMMN.00.01
+     * @edit GI-CMMN.00.02
+     * - Renamed to FILE_REQUIRES_VAR from REQUIRED_VAR
+     * @edit GI-CMMN.00.03
+     * - Moved from GIndie\Exception
+     */
+    const REQUIRED_VAR = 0;
+
+    /**
+     * 
+     * @since GI-CMMN.00.03
+     * 
+     * @param int $constant
+     * @param string|null $param1
+     * @param string|null $param2
+     * @return string
+     * 
+     */
+    protected static function handleMessage($constant, $param1 = null, $param2 = null)
+    {
+        $message = "";
         switch ($constant)
         {
-            case static::FILE_NOT_FOUND:
-                $message = $constants[$constant] . ":" . $param1;
-                break;
             case static::REQUIRED_VAR:
-                $message = $constants[$constant] . ":" . $param2 . " ON FILE " . $param1;
+                $formatMessage = static::$constants[self::class][$constant] . " " . $param2;
+                $message = parent::handleMessage(static::FILE_FORMAT, $param1, $formatMessage);
                 break;
             default:
-                $message = "UNDEFINED_EXCEPTION:" . $constant;
+                $message = parent::handleMessage($constant, $param1, $param2);
                 break;
         }
-        parent::__construct($message, $constant);
+        return $message;
     }
 
 }
