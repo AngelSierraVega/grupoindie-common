@@ -31,6 +31,8 @@ namespace GIndie;
  * @edit GI-CMMN.00.04 17-12-26
  * - Updated method: fileFormat(), __construct(), handleMessage()
  * - Created var formatMessage
+ * @edit GI-CMMN.00.05
+ * - Updated method: handleMessage()
  */
 class Exception extends \Exception
 {
@@ -120,8 +122,10 @@ class Exception extends \Exception
      * - Use var $constants
      * @edit GI-CMMN.00.04
      * - Use var formatMessage
+     * @edit GI-CMMN.00.05
+     * - Removed static from visibility for using $this.
      */
-    protected static function handleMessage($constant, $param1 = null, $param2 = null)
+    protected function handleMessage($constant, $param1 = null, $param2 = null)
     {
         $message = "";
         switch ($constant)

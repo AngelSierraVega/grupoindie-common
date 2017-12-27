@@ -1,24 +1,28 @@
 <?php
 
 /**
- * GICommon - DocComment 2017-12-24
- * @copyright (C) 2017 Angel Sierra Vega. Grupo INDIE.
- *
- * @package GrupoIndie
- * @subpackage Common
+ * GICommon - DocComment
+ * 
  */
 
 namespace GIndie\Common\Parser;
 
 /**
  * Description of DocComment
+ * 
+ * @copyright (C) 2017 Angel Sierra Vega. Grupo INDIE.
+ *
+ * @package GrupoIndie
+ * @subpackage Common
  *
  * @author Angel Sierra Vega <angel.sierra@grupoindie.com>
- * @version GI-CMMN.00.00 2017-12-24
+ * @version GI-CMMN.00.00 17-12-24
  * @edit GI-CMMN.00.01
  *  - Added main functions
  * @edit GI-CMMN.00.02
  * - Functional class
+ * @edit GI-CMMN.00.03 18-01-01
+ * - Updated visibility of methods for inheritance
  */
 class DocComment
 {
@@ -38,8 +42,9 @@ class DocComment
      * @return type
      * @since GI-CMMN.00.01
      * @edit GI-CMMN.00.02
+     * @edit GI-CMMN.00.03
      */
-    private function parseTag($tagname, $value)
+    protected function parseTag($tagname, $value)
     {
         switch ($tagname)
         {
@@ -87,15 +92,17 @@ class DocComment
      *
      * @var array 
      * @since GI-CMMN.00.02
+     * @edit GI-CMMN.00.03
      */
-    private $data;
-    
+    protected $data;
+
     /**
      *
      * @var array 
      * @since GI-CMMN.00.02
+     * @edit GI-CMMN.00.03
      */
-    private $parsed;
+    protected $parsed;
 
     /**
      * 

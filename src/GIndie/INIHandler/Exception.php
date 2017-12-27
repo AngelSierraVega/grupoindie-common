@@ -25,6 +25,8 @@ namespace GIndie\INIHandler;
  * - Moved constants and constructor to \GIndie\Exception
  * - Created method: requiredVariable(), handleMessage()
  * - const REQUIRED_VAR moved from GIndie\Exception
+ * @edit GI-CMMN.00.04
+ * - Updated method: handleMessage()
  */
 class Exception extends \GIndie\Exception
 {
@@ -62,9 +64,11 @@ class Exception extends \GIndie\Exception
      * @param string|null $param1
      * @param string|null $param2
      * @return string
+     * @edit GI-CMMN.00.04
+     * - Removed static from visibility for using $this.
      * 
      */
-    protected static function handleMessage($constant, $param1 = null, $param2 = null)
+    protected function handleMessage($constant, $param1 = null, $param2 = null)
     {
         $message = "";
         switch ($constant)

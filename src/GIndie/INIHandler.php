@@ -31,16 +31,23 @@ namespace GIndie;
  * @edit GI-CMMN.00.06 2017-12-26
  * - Created method: validateDataArray()
  * - Updated method: readINI(), storeINI(), validateVars(), getCategoryValue()
+ * @edit GI-CMMN.00.07 18-01-05
+ * - Use trait AliasMethods
  */
 abstract class INIHandler implements \GIndie\INIHandler\InterfaceINIHandler
 {
+    
+    /**
+     * @since GI-CMMN.00.07
+     */
+    use \GIndie\INIHandler\AliasMethods;
 
     /**
      * Gets the value from the specified variable
      * 
      * @since GI-CMMN.00.01
      * 
-     * @param string $category
+     * @param string $category The category of the variable.
      * @param string $varname The name of the variable
      * 
      * @return mixed
