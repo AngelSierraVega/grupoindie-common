@@ -22,9 +22,28 @@ namespace GIndie;
  * @edit GI-CMMN.00.02
  * - Updated constants. Range of 20 int for each "category" 
  * - Created handleMessage() from constructor
+ * @edit GI-CMMN.00.03
+ * - protected constructor
+ * - Created methods fileFormat()
+ * - Updated methods: __construct(), handleMessage()
+ * - Created var $constants
+ * - Updated constant definition.
  */
 class Exception extends \Exception
 {
+
+    /**
+     * 
+     * @factory
+     * @since GI-CMMN.00.03
+     * 
+     * @param string $pathToFile
+     * @return \GIndie\Exception
+     */
+    public static function fileFormat($pathToFile)
+    {
+        return new static(static::FILE_FORMAT, $pathToFile);
+    }
 
     /**
      * 
@@ -57,15 +76,26 @@ class Exception extends \Exception
      * @since GI-CMMN.00.01
      * @edit GI-CMMN.00.02
      * - Use handleMessage()
+     * @edit GI-CMMN.00.03
+     * - Added ReflectionClass code from handleMessage() 
      */
-    public function __construct($constant, $param1 = null, $param2 = null)
+    protected function __construct($constant, $param1 = null, $param2 = null)
     {
-        if(!\is_int($constant)){
+        if (!\is_int($constant)) {
             \trigger_error("Parameter should be constant", \E_USER_ERROR);
         }
-        \var_dump($constant);
-        parent::__construct(static::handleMessage($constant,$param1,$param2), $constant);
+        if (!isset(static::$constants[static::class])) {
+            $class = new \ReflectionClass(static::class);
+            static::$constants[static::class] = \array_flip($class->getConstants());
+        }
+        parent::__construct(static::handleMessage($constant, $param1, $param2), $constant);
     }
+
+    /**
+     * @since GI-CMMN.00.03
+     * @var array An static assoc array where key = classname, value = array
+     */
+    protected static $constants = [];
 
     /**
      * 
@@ -73,64 +103,63 @@ class Exception extends \Exception
      * 
      * @param int $constant
      * @return string
-     * 
+     * @edit GI-CMMN.00.03
+     * - added \trigger_error() on UNDEFINED_EXCEPTION
+     * - Moved case static::FILE_REQUIRES_VAR to INIHandler\Exception
+     * - Moved ReflectionClass related code to constructor 
+     * - Use var $constants
      */
     protected static function handleMessage($constant, $param1 = null, $param2 = null)
     {
-        $class = new \ReflectionClass(\get_called_class());
-        $constants = \array_flip($class->getConstants());
         $message = "";
         switch ($constant)
         {
             case static::FILE_NOT_FOUND:
                 $this->fileFullPath = $param1;
-                $message = $constants[$constant] . ": " . $this->fileFullPath;
+                $message = static::$constants[static::class][$constant] . ": " . $this->fileFullPath;
                 break;
-            case static::FILE_REQUIRES_VAR:
-                $message = $constants[$constant] . ":" . $param2 . " ON FILE " . $param1;
-                break;
-            case static::FORMAT:
-                $message = $constants[$constant] . ": " . $param1;
+            case static::FILE_FORMAT:
+                $this->fileFullPath = $param1;
+                $message = static::$constants[static::class][$constant] . ": " . $param1;
                 break;
             default:
+                \trigger_error("UNDEFINED_EXCEPTION: " . $constant, \E_USER_ERROR);
                 $message = "UNDEFINED_EXCEPTION:" . $constant;
                 break;
         }
-        \var_dump($message);
-        \var_dump($constant);
         return $message;
     }
-    
+
     /**
-     * File related exceptions from 20 to 39
-     * @var int
+     * File related exceptions from 100
+     * 
      * @since GI-CMMN.00.02
+     * 
+     * @var int
+     * 
+     * @edit GI-CMMN.00.03
      */
-    const FILE = 20;
+    const FILE = 100;
 
     /**
      * FILE_NOT_FOUND
-     * @var int
+     * 
      * @since GI-CMMN.00.01
-     * @edit GI-CMMN.00.02
-     */
-    const FILE_NOT_FOUND = 21;
-
-    /**
-     * FILE_REQUIRES_VAR
-     * @var int
-     * @since GI-CMMN.00.01
-     * @edit GI-CMMN.00.02
-     * - Renamed to FILE_REQUIRES_VAR from REQUIRED_VAR
-     */
-    const FILE_REQUIRES_VAR = 22;
-
-    /**
      * 
      * @var int
-     * @since GI-CMMN.00.01
-     * @edit GI-CMMN.00.02
+     * @edit GI-CMMN.00.03
      */
-    const FORMAT = 40;
+    const FILE_NOT_FOUND = 110;
+
+    /**
+     * FILE_FORMAT
+     * 
+     * @since GI-CMMN.00.01
+     * 
+     * @var int
+     * 
+     * @edit GI-CMMN.00.03
+     */
+    const FILE_FORMAT = 120;
 
 }
