@@ -28,6 +28,9 @@ namespace GIndie;
  * - Updated methods: __construct(), handleMessage()
  * - Created var $constants
  * - Updated constant definition.
+ * @edit GI-CMMN.00.04 17-12-26
+ * - Updated method: fileFormat(), __construct(), handleMessage()
+ * - Created var formatMessage
  */
 class Exception extends \Exception
 {
@@ -38,11 +41,16 @@ class Exception extends \Exception
      * @since GI-CMMN.00.03
      * 
      * @param string $pathToFile
+     * @param string $formatMessage
+     * 
      * @return \GIndie\Exception
+     * 
+     * @edit GI-CMMN.00.04
+     * - Added parameter $formatMessage
      */
-    public static function fileFormat($pathToFile)
+    public static function fileFormat($pathToFile, $formatMessage)
     {
-        return new static(static::FILE_FORMAT, $pathToFile);
+        return new static(static::FILE_FORMAT, $pathToFile, $formatMessage);
     }
 
     /**
@@ -78,8 +86,10 @@ class Exception extends \Exception
      * - Use handleMessage()
      * @edit GI-CMMN.00.03
      * - Added ReflectionClass code from handleMessage() 
+     * @edit GI-CMMN.00.04
+     * - Public visibility due to error
      */
-    protected function __construct($constant, $param1 = null, $param2 = null)
+    public function __construct($constant, $param1 = null, $param2 = null)
     {
         if (!\is_int($constant)) {
             \trigger_error("Parameter should be constant", \E_USER_ERROR);
@@ -108,6 +118,8 @@ class Exception extends \Exception
      * - Moved case static::FILE_REQUIRES_VAR to INIHandler\Exception
      * - Moved ReflectionClass related code to constructor 
      * - Use var $constants
+     * @edit GI-CMMN.00.04
+     * - Use var formatMessage
      */
     protected static function handleMessage($constant, $param1 = null, $param2 = null)
     {
@@ -120,7 +132,8 @@ class Exception extends \Exception
                 break;
             case static::FILE_FORMAT:
                 $this->fileFullPath = $param1;
-                $message = static::$constants[static::class][$constant] . ": " . $param1;
+                $this->formatMessage = $param2;
+                $message = static::$constants[static::class][$constant] . " in file " . $this->fileFullPath . " " . $this->formatMessage;
                 break;
             default:
                 \trigger_error("UNDEFINED_EXCEPTION: " . $constant, \E_USER_ERROR);
@@ -129,6 +142,14 @@ class Exception extends \Exception
         }
         return $message;
     }
+
+    /**
+     * $formatMessage
+     * 
+     * @since GI-CMMN.00.04
+     * @var string|null 
+     */
+    public $formatMessage;
 
     /**
      * File related exceptions from 100
