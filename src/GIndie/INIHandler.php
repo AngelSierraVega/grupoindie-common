@@ -28,21 +28,30 @@ namespace GIndie;
  * - Replaced static::$ini_data with self::$ini_data 
  * @edit GI-CMMN.00.05
  * - Method readINI(): static::pathToFile() used
+ * @edit GI-CMMN.00.06 2017-12-26
+ * - Created method: validateDataArray()
+ * - Updated method: readINI(), storeINI(), validateVars(), getCategoryValue()
  */
 abstract class INIHandler implements \GIndie\INIHandler\InterfaceINIHandler
 {
 
     /**
      * Gets the value from the specified variable
-     * @param string $varname The name of the variable
+     * 
      * @since GI-CMMN.00.01
-     * @edit GI-CMMN.00.02
+     * 
+     * @param string $category
+     * @param string $varname The name of the variable
+     * 
      * @return mixed
+     * @edit GI-CMMN.00.02
+     * - Renamed to getCategoryValue from getValue
+     * - Added parameter $category
      */
-    public static function getValue($varname)
+    public static function getCategoryValue($category, $varname)
     {
         isset(self::$ini_data[static::fileName()]) ?: static::readINI();
-        return self::$ini_data[static::fileName()][$varname];
+        return self::$ini_data[static::fileName()][$category][$varname];
     }
 
     /**
@@ -52,16 +61,15 @@ abstract class INIHandler implements \GIndie\INIHandler\InterfaceINIHandler
      * 
      * @return array The settings are returned as an associative array on success,
      * and <b>FALSE</b> on failure.
-     * @edit GI-CMMN.00.02
-     * @edit GI-CMMN.00.03
-     * @edit GI-CMMN.00.05
+     * @edit GI-CMMN.00.06
+     * - parse_ini_file now reads the categories from the file
      */
     private static function readINI()
     {
         if (!\file_exists(static::pathToFile())) {
             throw new \GIndie\INIHandler\Exception(\GIndie\INIHandler\Exception::FILE_NOT_FOUND, static::pathToFile());
         }
-        return static::validateVars(\parse_ini_file(static::pathToFile()));
+        return static::validateDataArray(\parse_ini_file(static::pathToFile(), true));
     }
 
     /**
@@ -70,17 +78,47 @@ abstract class INIHandler implements \GIndie\INIHandler\InterfaceINIHandler
      * 
      * @return array The settings are returned as an associative array on success,
      * and <b>FALSE</b> on failure.
-     * @edit GI-CMMN.00.02
+     * @edit GI-CMMN.00.06
+     * - Commented session-save related code
+     * @todo 
+     * - Handle session store.
      */
     private static function storeINI(array $data)
     {
-        if (\session_status() === \PHP_SESSION_ACTIVE) {
-            $_SESSION["ini_data"][static::fileName()] = $data;
-            self::$ini_data[static::fileName()] = &$_SESSION["ini_data"][static::fileName()];
-        } else {
-            self::$ini_data[static::fileName()] = $data;
-        }
+//        if (\session_status() === \PHP_SESSION_ACTIVE) {
+//            $_SESSION["ini_data"][static::fileName()] = $data;
+//            self::$ini_data[static::fileName()] = &$_SESSION["ini_data"][static::fileName()];
+//        } else {
+//            self::$ini_data[static::fileName()] = $data;
+//        }
+        self::$ini_data[static::fileName()] = $data;
         return self::$ini_data[static::fileName()];
+    }
+
+    /**
+     * @todo
+     * 
+     * @param array $data
+     * @return type
+     * @since GI-CMMN.00.06
+     */
+    private static function validateDataArray(array $data)
+    {
+        //\array_keys($data);
+//        foreach (\array_values($data) as $value) {
+//            switch (true)
+//            {
+//                case \is_string($value):
+//                    throw new INIHandler\Exception(INIHandler\Exception::requiredVariable(static::pathToFile(), $varname));
+//                    break;
+//                default:
+//                    break;
+//            }
+//            if (!\array_key_exists($varname, $data)) {
+//                throw new \GIndie\INIHandler\Exception(\GIndie\INIHandler\Exception::REQUIRED_VAR, static::fileName(), $varname);
+//            }
+//        }
+        return static::validateVars($data);
     }
 
     /**
@@ -90,13 +128,21 @@ abstract class INIHandler implements \GIndie\INIHandler\InterfaceINIHandler
      * 
      * @return array The settings are returned as an associative array on success,
      * and <b>FALSE</b> on failure.
-     * @edit GI-CMMN.00.03
+     * @edit GI-CMMN.00.06
+     * - Validate sections functional
+     * @todo 
+     * - validate variables
      */
     private static function validateVars(array $data)
     {
-        foreach (static::requiredVars() as $varname) {
-            if (!\array_key_exists($varname, $data)) {
-                throw new \GIndie\INIHandler\Exception(\GIndie\INIHandler\Exception::REQUIRED_VAR, static::fileName(),$varname);
+        //Validate sections
+        foreach (\array_keys(static::requiredVars()) as $section) {
+            if (\array_key_exists($section, $data)) {
+                /**
+                 * @todo validate variables
+                 */
+            } else {
+                throw \GIndie\INIHandler\Exception::requiredVariable(static::pathToFile(), $section);
             }
         }
         return static::storeINI($data);
