@@ -16,6 +16,8 @@ namespace GIndie\INIHandler;
  * @version GI-CMMN.00.01
  * @edit GI-CMMN.00.02
  * - pathToFile() added
+ * @edit GI-CMMN.00.03
+ * - Added comment on pathToFile()
  */
 interface InterfaceINIHandler
 {
@@ -35,6 +37,10 @@ interface InterfaceINIHandler
     public static function requiredVars();
 
     /**
+     * 
+     * For standard class use: return __DIR__ . "\\" . static::fileName() . ".ini";
+     * For phar use: return \dirname(\Phar::running(false)) . "/" . static::fileName() . ".ini";
+     * 
      * @since GI-CMMN.00.02
      * @return string
      */
