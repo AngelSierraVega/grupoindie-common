@@ -33,10 +33,12 @@ namespace GIndie;
  * - Updated method: readINI(), storeINI(), validateVars(), getCategoryValue()
  * @edit GI-CMMN.00.07 18-01-05
  * - Use trait AliasMethods
+ * @edit GI-CMMN.00.08 18-01-07
+ * - 
  */
 abstract class INIHandler implements \GIndie\INIHandler\InterfaceINIHandler
 {
-    
+
     /**
      * @since GI-CMMN.00.07
      */
@@ -54,11 +56,29 @@ abstract class INIHandler implements \GIndie\INIHandler\InterfaceINIHandler
      * @edit GI-CMMN.00.02
      * - Renamed to getCategoryValue from getValue
      * - Added parameter $category
+     * @edit GI-CMMN.00.08
+     * - Returns null if var is not setted.
      */
     public static function getCategoryValue($category, $varname)
     {
         isset(self::$ini_data[static::fileName()]) ?: static::readINI();
-        return self::$ini_data[static::fileName()][$category][$varname];
+        return isset(self::$ini_data[static::fileName()][$category][$varname]) ? self::$ini_data[static::fileName()][$category][$varname] : null;
+    }
+
+    /**
+     * 
+     * @return string
+     * @since WST-SRVDR.00.08
+     */
+    final public static function pathToFile()
+    {
+        if (empty(\Phar::running(false))) {
+            $tmpDir = \pathinfo($_SERVER["SCRIPT_FILENAME"], \PATHINFO_DIRNAME) . "\\private\\" . static::fileName() . ".ini";
+            //\var_dump($tmpDir);
+            return $tmpDir;
+        } else {
+            return \dirname(\Phar::running(false)) . "/" . static::fileName() . ".ini";
+        }
     }
 
     /**
@@ -74,6 +94,7 @@ abstract class INIHandler implements \GIndie\INIHandler\InterfaceINIHandler
     private static function readINI()
     {
         if (!\file_exists(static::pathToFile())) {
+            //\var_dump(static::pathToFile());
             throw new \GIndie\INIHandler\Exception(\GIndie\INIHandler\Exception::FILE_NOT_FOUND, static::pathToFile());
         }
         return static::validateDataArray(\parse_ini_file(static::pathToFile(), true));
@@ -112,19 +133,7 @@ abstract class INIHandler implements \GIndie\INIHandler\InterfaceINIHandler
     private static function validateDataArray(array $data)
     {
         //\array_keys($data);
-//        foreach (\array_values($data) as $value) {
-//            switch (true)
-//            {
-//                case \is_string($value):
-//                    throw new INIHandler\Exception(INIHandler\Exception::requiredVariable(static::pathToFile(), $varname));
-//                    break;
-//                default:
-//                    break;
-//            }
-//            if (!\array_key_exists($varname, $data)) {
-//                throw new \GIndie\INIHandler\Exception(\GIndie\INIHandler\Exception::REQUIRED_VAR, static::fileName(), $varname);
-//            }
-//        }
+
         return static::validateVars($data);
     }
 
@@ -144,10 +153,51 @@ abstract class INIHandler implements \GIndie\INIHandler\InterfaceINIHandler
     {
         //Validate sections
         foreach (\array_keys(static::requiredVars()) as $section) {
+            if (\is_int($section)) {
+                throw \GIndie\INIHandler\Exception::fileFormat(static::class . ".php", "requiredVars() should be an assoc array");
+            }
+            //\var_dump($section);
+            $vars = static::requiredVars();
+            $vars = $vars[$section];
+            if(\is_array($vars)){
+                
+            }else{
+                $vars = [$vars];
+            }
+            //\var_dump($vars);
             if (\array_key_exists($section, $data)) {
-                /**
-                 * @todo validate variables
-                 */
+                foreach ($vars as $requiredVar) {
+                    //\var_dump($requiredVar);
+                    //\var_dump($data[$section]);
+                    if (\array_key_exists($requiredVar, $data[$section])) {
+                        /**
+                         * @todo validate variables
+                         */
+                    } else {
+                        throw \GIndie\INIHandler\Exception::requiredVariable(static::pathToFile(), $section . "-" . $requiredVar);
+                    }
+                }
+//                if (\in_array($vars, $data))
+//                    ;
+//                foreach (\array_values($data[$section]) as $value) {
+////                    switch (true)
+////                    {
+////                        case \is_string($value):
+////                            throw new INIHandler\Exception(INIHandler\Exception::requiredVariable(static::pathToFile(), $varname));
+////                            break;
+////                        default:
+////                            break;
+////                    }
+//                    if (!\array_key_exists($varname, $data)) {
+//                        throw new \GIndie\INIHandler\Exception(\GIndie\INIHandler\Exception::REQUIRED_VAR, static::fileName(), $varname);
+//                    }
+//                }
+//                \var_dump($data);
+//                if (\array_key_exists($var, $data[$section])) {
+//                    
+//                } else {
+//                    
+//                }
             } else {
                 throw \GIndie\INIHandler\Exception::requiredVariable(static::pathToFile(), $section);
             }

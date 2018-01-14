@@ -4,13 +4,14 @@
 <#if licenseFirst??>
 ${licenseFirst}
 </#if>
-${licensePrefix}${project.displayName} - ${name} ${date?date?string("yyyy-MM-dd")}
+${licensePrefix}${project.displayName} - ${name}
+${licensePrefix?replace(" +$", "", "r")}
 ${licensePrefix}@copyright (C) ${date?date?string("yyyy")} Angel Sierra Vega. Grupo INDIE.
 ${licensePrefix?replace(" +$", "", "r")}
 ${licensePrefix}@package GrupoIndie
 ${licensePrefix}@subpackage Common
 ${licensePrefix?replace(" +$", "", "r")}
-${licensePrefix}@version GI-CMMN.00.00
+${licensePrefix}@version GI-CMMN.00.00 ${date?date?string("yy-MM-dd")} [Class/Trait/Interface/File] created.
 <#if licenseLast??>
 ${licenseLast}
 </#if>

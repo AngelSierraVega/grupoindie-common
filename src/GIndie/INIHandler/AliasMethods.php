@@ -33,7 +33,6 @@ trait AliasMethods
      */
     public static function getValue($category, $varname)
     {
-        isset(self::$ini_data[static::fileName()]) ?: static::readINI();
-        return self::$ini_data[static::fileName()][$category][$varname];
+        return static::getCategoryValue($category, $varname);
     }
 }

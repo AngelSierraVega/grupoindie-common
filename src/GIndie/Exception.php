@@ -137,7 +137,7 @@ class Exception extends \Exception
             case static::FILE_FORMAT:
                 $this->fileFullPath = $param1;
                 $this->formatMessage = $param2;
-                $message = static::$constants[static::class][$constant] . " in file " . $this->fileFullPath . " " . $this->formatMessage;
+                $message = static::$constants[static::class][$constant] . " in file: " . $this->fileFullPath . " msj: " . $this->formatMessage;
                 break;
             default:
                 \trigger_error("UNDEFINED_EXCEPTION: " . $constant, \E_USER_ERROR);
