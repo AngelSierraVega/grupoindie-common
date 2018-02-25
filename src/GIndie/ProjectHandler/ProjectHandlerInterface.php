@@ -14,6 +14,8 @@ namespace GIndie\ProjectHandler;
  * @version GI-CMMN.00.00 18-02-23 Empty interface created.
  * @edit GI-CMMN.00.01
  * - Added methods from UnitTest\GIndie\UnitTest\Handler\InterfaceProject
+ * @edit GI-CMMN.00.02 18-02-24
+ * - Updated autoloaderFilename()
  */
 interface ProjectHandlerInterface
 {
@@ -51,6 +53,7 @@ interface ProjectHandlerInterface
     /**
      * 
      * @since GI-CMMN.00.01
+     * @edit GI-CMMN.00.02
      */
-    public static function autoloaderFile();
+    public static function autoloaderFilename();
 }

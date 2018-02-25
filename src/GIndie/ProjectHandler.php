@@ -15,6 +15,8 @@ namespace GIndie;
  * @edit GI-CMMN.00.01
  * - Abstract class
  * - Implemented ProjectHandlerInterface
+ * @edit GI-CMMN.00.02 18-02-24
+ * - Updated autoloaderFilename()
  */
 abstract class ProjectHandler implements ProjectHandler\ProjectHandlerInterface
 {
@@ -31,10 +33,24 @@ abstract class ProjectHandler implements ProjectHandler\ProjectHandlerInterface
     /**
      * @return string
      * @since GI-CMMN.00.01
+     * @edit GI-CMMN.00.02
      */
-    public static function autoloaderFile()
+    public static function autoloaderFilename()
     {
-        return static::pathToSourceCode() . "Autoloader" . static::projectName() . ".php";
+        return "Autoloader" . static::projectName() . ".php";
+    }
+
+    /**
+     * 
+     * @return string
+     * @since GI-CMMN.00.02
+     */
+    public static function getNamespace()
+    {
+        $rntStr = "\\" . static::projectVendor();
+        $rntStr .= static::projectNamespace() ? "\\" . static::projectNamespace() : "";
+        $rntStr .= "\\" . static::projectName();
+        return $rntStr;
     }
 
 }

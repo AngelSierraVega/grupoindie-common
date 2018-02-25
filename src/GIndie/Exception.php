@@ -33,9 +33,25 @@ namespace GIndie;
  * - Created var formatMessage
  * @edit GI-CMMN.00.05
  * - Updated method: handleMessage()
+ * @edit GI-CMMN.00.06 18-02-24
+ * - Created FILE_CUSTOM, $customMessage, fileCustom()
+ * - Updated handleMessage()
  */
 class Exception extends \Exception
 {
+    
+    /**
+     * 
+     * @factory
+     * @param string $customMessage
+     * @return \GIndie\Exception
+     * 
+     * @since GI-CMMN.00.06
+     */
+    public static function fileCustom($customMessage)
+    {
+        return new static(static::FILE_CUSTOM, $customMessage);
+    }
 
     /**
      * 
@@ -124,12 +140,18 @@ class Exception extends \Exception
      * - Use var formatMessage
      * @edit GI-CMMN.00.05
      * - Removed static from visibility for using $this.
+     * @edit GI-CMMN.00.06
+     * - Created case static::FILE_CUSTOM
      */
     protected function handleMessage($constant, $param1 = null, $param2 = null)
     {
         $message = "";
         switch ($constant)
         {
+            case static::FILE_CUSTOM:
+                $this->customMessage = $param1;
+                $message = static::$constants[static::class][$constant] . ": " . $this->customMessage;
+                break;
             case static::FILE_NOT_FOUND:
                 $this->fileFullPath = $param1;
                 $message = static::$constants[static::class][$constant] . ": " . $this->fileFullPath;
@@ -154,6 +176,13 @@ class Exception extends \Exception
      * @var string|null 
      */
     public $formatMessage;
+    
+    /**
+     * 
+     * @var string|null 
+     * @since GI-CMMN.00.06 
+     */
+    public $customMessage;
 
     /**
      * File related exceptions from 100
@@ -175,7 +204,7 @@ class Exception extends \Exception
      * @edit GI-CMMN.00.03
      */
     const FILE_NOT_FOUND = 110;
-
+    
     /**
      * FILE_FORMAT
      * 
@@ -186,5 +215,13 @@ class Exception extends \Exception
      * @edit GI-CMMN.00.03
      */
     const FILE_FORMAT = 120;
+    
+    /**
+     * FILE_CUSTOM
+     * 
+     * @var int
+     * @since GI-CMMN.00.06
+     */
+    const FILE_CUSTOM = 130;
 
 }
