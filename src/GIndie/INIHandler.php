@@ -34,7 +34,8 @@ namespace GIndie;
  * @edit GI-CMMN.00.07 18-01-05
  * - Use trait AliasMethods
  * @edit GI-CMMN.00.08 18-01-07
- * - 
+ * - Created pathToFile()
+ * - Updated getCategoryValue()
  */
 abstract class INIHandler implements \GIndie\INIHandler\InterfaceINIHandler
 {
@@ -68,7 +69,7 @@ abstract class INIHandler implements \GIndie\INIHandler\InterfaceINIHandler
     /**
      * 
      * @return string
-     * @since WST-SRVDR.00.08
+     * @since GI-CMMN.00.08
      */
     final public static function pathToFile()
     {
@@ -159,9 +160,9 @@ abstract class INIHandler implements \GIndie\INIHandler\InterfaceINIHandler
             //\var_dump($section);
             $vars = static::requiredVars();
             $vars = $vars[$section];
-            if(\is_array($vars)){
+            if (\is_array($vars)) {
                 
-            }else{
+            } else {
                 $vars = [$vars];
             }
             //\var_dump($vars);
