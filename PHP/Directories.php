@@ -14,6 +14,8 @@ namespace GIndie\Common\PHP;
  * @version GI-CMMN.00.00 18-02-24 Empty class created.
  * @edit GI-CMMN.00.01
  * - Created createFolderStructure()
+ * @todo 
+ * - Move class to Handler/
  */
 class Directories
 {

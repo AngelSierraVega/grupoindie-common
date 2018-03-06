@@ -28,7 +28,7 @@ namespace GIndie\INIHandler;
  * @edit GI-CMMN.00.04
  * - Updated method: handleMessage()
  */
-class Exception extends \GIndie\Exception
+class Exception extends \GIndie\Common\Exception
 {
 
     /**
@@ -37,7 +37,7 @@ class Exception extends \GIndie\Exception
      * @since GI-CMMN.00.03
      * 
      * @param string $pathToFile
-     * @return \GIndie\Exception
+     * @return \GIndie\Common\Exception
      */
     public static function requiredVariable($pathToFile, $varname)
     {

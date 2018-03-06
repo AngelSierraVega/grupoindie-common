@@ -36,6 +36,8 @@ namespace GIndie;
  * @edit GI-CMMN.00.06 18-02-24
  * - Created FILE_CUSTOM, $customMessage, fileCustom()
  * - Updated handleMessage()
+ * @edit GI-CMMN.00.07 18-02-27
+ * - Updated namespace
  */
 class Exception extends \Exception
 {

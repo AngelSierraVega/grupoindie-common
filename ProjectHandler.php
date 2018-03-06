@@ -20,7 +20,7 @@ namespace GIndie\Common;
  * - Remove autoloaderFilename()
  * - Renamed file from CommonProjectHandler.php to ProjectHandler.php
  */
-class ProjectHandler extends ProjectHandler
+class ProjectHandler extends \GIndie\ProjectHandler
 {
     /**
      * 
