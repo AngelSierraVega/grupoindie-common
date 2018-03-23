@@ -28,7 +28,7 @@ namespace GIndie\INIHandler;
  * @edit GI-CMMN.00.04
  * - Updated method: handleMessage()
  */
-class Exception extends \GIndie\Common\Exception
+class Exception extends \GIndie\Exception
 {
 
     /**

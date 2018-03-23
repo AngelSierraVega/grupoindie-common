@@ -20,6 +20,8 @@
 
 namespace GIndie\Common;
 
+require_once 'Mysqldump.php';
+
 /**
  * Autoloader function
  * @since GI-CMMN.00.01
@@ -36,6 +38,9 @@ namespace GIndie\Common;
                 require_once($edited);
             }
             break;
+//        case \Ifsnop\Mysqldump\Mysqldump::class:
+//            require_once 'Mysqldump.php';
+//            break;
         default:
             $requestedFile = \explode("\\", $className);
             $requestedFile = \array_pop($requestedFile) . ".php";
@@ -58,7 +63,7 @@ namespace GIndie\Common;
                 $edited = \str_replace("\\", \DIRECTORY_SEPARATOR, __DIR__ . \DIRECTORY_SEPARATOR . "Handler" . $edited) . ".php";
                 if (\is_readable($edited)) {
                     require_once($edited);
-                }else {
+                } else {
                     $edited = \substr($className, \strlen($requestedNamespace) + \strrpos($className, $requestedNamespace));
                     $edited = \str_replace("\\", \DIRECTORY_SEPARATOR, __DIR__ . \DIRECTORY_SEPARATOR . "Handler" . \DIRECTORY_SEPARATOR . "ProjectHandler" . \DIRECTORY_SEPARATOR . $edited) . ".php";
                     if (\is_readable($edited)) {
