@@ -43,17 +43,23 @@ interface ProjectHandlerInterface
      * @since GI-CMMN.00.01
      */
     public static function projectVendor();
-    
+
     /**
      * 
      * @since GI-CMMN.00.01
      */
     public static function pathToSourceCode();
-    
+
     /**
      * 
      * @since GI-CMMN.00.01
      * @edit GI-CMMN.00.02
      */
     public static function autoloaderFilename();
+
+    /**
+     * @return array
+     * @since 18-03-27
+     */
+    public static function excludeFromPhar();
 }

@@ -53,4 +53,13 @@ abstract class ProjectHandler implements ProjectHandler\ProjectHandlerInterface
         return $rntStr;
     }
 
+    /**
+     * @return array
+     * @since 18-03-27
+     */
+    public static function excludeFromPhar()
+    {
+        return [".git", ".gitignore", "nbproject"];
+    }
+
 }
