@@ -4,8 +4,7 @@
  * GICommon - Iterator 2017-12-24
  * @copyright (C) 2017 Angel Sierra Vega. Grupo INDIE.
  *
- * @package GrupoIndie
- * @subpackage Common
+ * @package Common
  */
 
 namespace GIndie\Common\PHP;
@@ -19,6 +18,11 @@ namespace GIndie\Common\PHP;
  * @version GI-CMMN.00.00
  * @edit GI-CMMN.00.01
  * - Sources from external project SG-DML
+ * @edit 18-05-19
+ * - Upgraded DocBlock
+ * @version 0A.35
+ * @todo
+ * - Upgrade file versions
  */
 abstract class Iterator extends ArrayAccess implements \Iterator
 {

@@ -10,14 +10,18 @@ namespace GIndie\INIHandler;
  * @author Angel Sierra Vega <angel.sierra@grupoindie.com>
  * @copyright (C) 2018 Angel Sierra Vega. Grupo INDIE.
  *
- * @package GrupoIndie
- * @subpackage Common
+ * @package Common
  *
  * @version GI-CMMN.00.00 18-02-25 Empty class created.
  * @edit GI-CMMN.00.01
  * - Class extends \GIndie\INIHandler
  * - Abstract class
  * - Created requiredVars(), getVigor(), getIntro(), getTerminos()
+ * @edit 18-05-19
+ * - Upgraded DocBlock
+ * @version 0A.35
+ * @todo
+ * - Upgrade file versions
  */
 abstract class WebTerminosServicio extends \GIndie\INIHandler
 {

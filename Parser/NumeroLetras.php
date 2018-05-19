@@ -25,12 +25,16 @@ namespace GIndie\Common\Parser;
  * 
  * @copyright (C) 2018 Angel Sierra Vega. Grupo INDIE.
  *
- * @package GrupoIndie
- * @subpackage Common
+ * @package Common
  *
  * @version GI-CMMN.00.00 18-01-07 ClassTrait created.
  * @edit GI-CMMN.00.01 18-01-07
  * - Copied class from WebServiceTimbrado
+ * @edit 18-05-19
+ * - Upgraded DocBlock
+ * @version 0A.35
+ * @todo
+ * - Upgrade file versions
  */
 class NumeroLetras
 {

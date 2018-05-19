@@ -4,8 +4,7 @@
  * GICommon - INIHandler 2017-12-23
  * @copyright (C) 2017 Angel Sierra Vega. Grupo INDIE.
  *
- * @package GrupoIndie
- * @subpackage Common
+ * @package Common
  */
 
 namespace GIndie;
@@ -36,6 +35,11 @@ namespace GIndie;
  * @edit GI-CMMN.00.08 18-01-07
  * - Created pathToFile()
  * - Updated getCategoryValue()
+ * @edit 18-05-19
+ * - Upgraded DocBlock
+ * @version 0A.35
+ * @todo
+ * - Upgrade file versions
  */
 abstract class INIHandler implements \GIndie\INIHandler\InterfaceINIHandler
 {

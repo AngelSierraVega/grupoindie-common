@@ -4,8 +4,7 @@
  * GICommon - Exception 2017-12-23
  * @copyright (C) 2017 Angel Sierra Vega. Grupo INDIE.
  *
- * @package GrupoIndie
- * @subpackage Common
+ * @package Common
  */
 
 namespace GIndie;
@@ -14,41 +13,43 @@ namespace GIndie;
  * Description of Exception
  * 
  * @author Angel Sierra Vega <angel.sierra@grupoindie.com>
- * @version GI-CMMN.00.00 2017-12-23
- * @edit GI-CMMN.00.01 2017-12-26
+ * @since 17-12-23
+ * @edit 17-12-26
  * - Added constants from GIndie\INIHandler\Exception
  * - Added constructor from GIndie\INIHandler\Exception
  * - Added var $pathToFile
- * @edit GI-CMMN.00.02
  * - Updated constants. Range of 20 int for each "category" 
  * - Created handleMessage() from constructor
- * @edit GI-CMMN.00.03
  * - protected constructor
  * - Created methods fileFormat()
  * - Updated methods: __construct(), handleMessage()
  * - Created var $constants
  * - Updated constant definition.
- * @edit GI-CMMN.00.04 17-12-26
  * - Updated method: fileFormat(), __construct(), handleMessage()
  * - Created var formatMessage
- * @edit GI-CMMN.00.05
  * - Updated method: handleMessage()
- * @edit GI-CMMN.00.06 18-02-24
+ * @version 0A.00
+ * @edit 18-02-24
  * - Created FILE_CUSTOM, $customMessage, fileCustom()
  * - Updated handleMessage()
- * @edit GI-CMMN.00.07 18-02-27
+ * @edit 18-02-27
  * - Updated namespace
+ * @version 0A.10
+ * @edit 18-05-19
+ * - Upgraded DocBlock and file version
+ * @version 0A.50
+ * 
  */
 class Exception extends \Exception
 {
-    
+
     /**
      * 
      * @factory
      * @param string $customMessage
      * @return \GIndie\Exception
      * 
-     * @since GI-CMMN.00.06
+     * @since 18-02-24
      */
     public static function fileCustom($customMessage)
     {
@@ -58,14 +59,14 @@ class Exception extends \Exception
     /**
      * 
      * @factory
-     * @since GI-CMMN.00.03
+     * @since 2017-12-26
      * 
      * @param string $pathToFile
      * @param string $formatMessage
      * 
      * @return \GIndie\Exception
      * 
-     * @edit GI-CMMN.00.04
+     * @edit 2017-12-26
      * - Added parameter $formatMessage
      */
     public static function fileFormat($pathToFile, $formatMessage)
@@ -76,7 +77,7 @@ class Exception extends \Exception
     /**
      * 
      * @factory
-     * @since GI-CMMN.00.01
+     * @since 2017-12-26
      * 
      * @param string $pathToFile
      * return \GIndie\Exception
@@ -88,9 +89,9 @@ class Exception extends \Exception
 
     /**
      *
-     * @since GI-CMMN.00.01
+     * @since 2017-12-26
      * @var string|null 
-     * @edit GI-CMMN.00.02 
+     * @edit 2017-12-26 
      * - Renamed to $fileFullPath from $pathToFile
      */
     public $fileFullPath;
@@ -101,12 +102,12 @@ class Exception extends \Exception
      * @param mixed|null $param1
      * @param mixed|null $param2
      * 
-     * @since GI-CMMN.00.01
-     * @edit GI-CMMN.00.02
+     * @since 2017-12-26
+     * @edit 2017-12-26
      * - Use handleMessage()
-     * @edit GI-CMMN.00.03
+     * @edit 2017-12-26
      * - Added ReflectionClass code from handleMessage() 
-     * @edit GI-CMMN.00.04
+     * @edit 2017-12-26
      * - Public visibility due to error
      */
     public function __construct($constant, $param1 = null, $param2 = null)
@@ -122,27 +123,27 @@ class Exception extends \Exception
     }
 
     /**
-     * @since GI-CMMN.00.03
+     * @since 2017-12-26
      * @var array An static assoc array where key = classname, value = array
      */
     protected static $constants = [];
 
     /**
      * 
-     * @since GI-CMMN.00.02
+     * @since 2017-12-26
      * 
      * @param int $constant
      * @return string
-     * @edit GI-CMMN.00.03
+     * @edit 2017-12-26
      * - added \trigger_error() on UNDEFINED_EXCEPTION
      * - Moved case static::FILE_REQUIRES_VAR to INIHandler\Exception
      * - Moved ReflectionClass related code to constructor 
      * - Use var $constants
-     * @edit GI-CMMN.00.04
+     * @edit 2017-12-26
      * - Use var formatMessage
-     * @edit GI-CMMN.00.05
+     * @edit 2017-12-26
      * - Removed static from visibility for using $this.
-     * @edit GI-CMMN.00.06
+     * @edit 18-02-24
      * - Created case static::FILE_CUSTOM
      */
     protected function handleMessage($constant, $param1 = null, $param2 = null)
@@ -174,55 +175,55 @@ class Exception extends \Exception
     /**
      * $formatMessage
      * 
-     * @since GI-CMMN.00.04
+     * @since 2017-12-26
      * @var string|null 
      */
     public $formatMessage;
-    
+
     /**
      * 
      * @var string|null 
-     * @since GI-CMMN.00.06 
+     * @since 18-02-24 
      */
     public $customMessage;
 
     /**
      * File related exceptions from 100
      * 
-     * @since GI-CMMN.00.02
+     * @since 2017-12-26
      * 
      * @var int
      * 
-     * @edit GI-CMMN.00.03
+     * @edit 2017-12-26
      */
     const FILE = 100;
 
     /**
      * FILE_NOT_FOUND
      * 
-     * @since GI-CMMN.00.01
+     * @since 2017-12-26
      * 
      * @var int
-     * @edit GI-CMMN.00.03
+     * @edit 2017-12-26
      */
     const FILE_NOT_FOUND = 110;
-    
+
     /**
      * FILE_FORMAT
      * 
-     * @since GI-CMMN.00.01
+     * @since 2017-12-26
      * 
      * @var int
      * 
-     * @edit GI-CMMN.00.03
+     * @edit 2017-12-26
      */
     const FILE_FORMAT = 120;
-    
+
     /**
      * FILE_CUSTOM
      * 
      * @var int
-     * @since GI-CMMN.00.06
+     * @since 18-02-24
      */
     const FILE_CUSTOM = 130;
 

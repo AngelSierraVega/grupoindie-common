@@ -10,7 +10,7 @@
  * @author   Diego Torres <ifsnop@github.com>
  * @license  http://www.gnu.org/copyleft/gpl.html GNU General Public License
  * @link     https://github.com/ifsnop/mysqldump-php
- *
+ * @version 0A.00
  */
 
 namespace Ifsnop\Mysqldump;

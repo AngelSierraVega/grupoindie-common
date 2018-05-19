@@ -4,10 +4,8 @@
  * GICommon - Exception 
  * @copyright (C) 2017 Angel Sierra Vega. Grupo INDIE.
  *
- * @package GrupoIndie
- * @subpackage Common
- *
- * 
+ * @package Common
+ * @since 17-12-23
  */
 
 namespace GIndie\INIHandler;
@@ -16,17 +14,19 @@ namespace GIndie\INIHandler;
  * Description of Exception
  *
  * @author Angel Sierra Vega <angel.sierra@grupoindie.com>
- * @version GI-CMMN.00.00 2017-12-23 Created class
- * @edit GI-CMMN.00.01
+ * 
+ * @edit 17-12-23
  * - Clase prototipo
- * @edit GI-CMMN.00.02
  * - Int constant. Updated __construct()
- * @edit GI-CMMN.00.03 17-12-26
+ * @edit 17-12-26
  * - Moved constants and constructor to \GIndie\Exception
  * - Created method: requiredVariable(), handleMessage()
  * - const REQUIRED_VAR moved from GIndie\Exception
- * @edit GI-CMMN.00.04
  * - Updated method: handleMessage()
+ * @version 0A.10
+ * @edit 18-05-19
+ * - Upgraded DocBlock and file version
+ * @version 0A.50
  */
 class Exception extends \GIndie\Exception
 {
@@ -34,7 +34,7 @@ class Exception extends \GIndie\Exception
     /**
      * 
      * @factory
-     * @since GI-CMMN.00.03
+     * @since 17-12-26
      * 
      * @param string $pathToFile
      * @return \GIndie\Common\Exception
@@ -48,23 +48,23 @@ class Exception extends \GIndie\Exception
      * REQUIRED_VAR
      * 
      * @var int
-     * @since GI-CMMN.00.01
-     * @edit GI-CMMN.00.02
+     * @since 17-12-23
+     * @edit 17-12-23
      * - Renamed to FILE_REQUIRES_VAR from REQUIRED_VAR
-     * @edit GI-CMMN.00.03
+     * @edit 17-12-26
      * - Moved from GIndie\Exception
      */
     const REQUIRED_VAR = 0;
 
     /**
      * 
-     * @since GI-CMMN.00.03
+     * @since 17-12-26
      * 
      * @param int $constant
      * @param string|null $param1
      * @param string|null $param2
      * @return string
-     * @edit GI-CMMN.00.04
+     * @edit 17-12-26
      * - Removed static from visibility for using $this.
      * 
      */

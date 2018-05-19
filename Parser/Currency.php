@@ -12,12 +12,16 @@ namespace GIndie\Common\Parser;
  * @author Angel Sierra Vega <angel.sierra@grupoindie.com>
  * @copyright (C) 2018 Angel Sierra Vega. Grupo INDIE.
  *
- * @package GrupoIndie
- * @subpackage Common
+ * @package Common
  *
  * @version GI-CMMN.00.00 18-02-06 Empty class created.
  * @edit GI-CMMN.00.01
  * - Created format(), formatFull()
+ * @edit 18-05-19
+ * - Upgraded DocBlock
+ * @version 0A.35
+ * @todo
+ * - Upgrade file versions
  */
 class Currency
 {

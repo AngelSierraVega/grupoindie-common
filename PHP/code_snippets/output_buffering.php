@@ -4,10 +4,14 @@
  * GICommon - output_buffering 
  * @copyright (C) 2017 Angel Sierra Vega. Grupo INDIE.
  *
- * @package GrupoIndie
- * @subpackage Common
+ * @package Common
  *
  * @version GI-CMMN.00.00 2017-12-26 Created file.
+ * @edit 18-05-19
+ * - Upgraded DocBlock
+ * @version 0A.35
+ * @todo
+ * - Upgrade file versions
  */
 \ob_start();
 ?>

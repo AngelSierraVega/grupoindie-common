@@ -8,24 +8,45 @@ namespace GIndie\Common;
  * @author Angel Sierra Vega <angel.sierra@grupoindie.com>
  * @copyright (C) 2018 Angel Sierra Vega. Grupo INDIE.
  *
- * @package GrupoIndie
- * @subpackage Common
+ * @package Common
  *
- * @version GI-CMMN.00.00 18-02-24 Empty class created.
- * @edit GI-CMMN.00.01
+ * @since 18-02-24
+ * @version UNDEFINED
+ * @edit 18-02-24
  * - Class extends ProjectHandler
  * - Implemented abstrac methods
  * - Created autoloaderFilename()
- * @edit GI-CMMN.00.02 18-02-27
+ * @edit 18-02-27 
  * - Remove autoloaderFilename()
  * - Renamed file from CommonProjectHandler.php to ProjectHandler.php
+ * @version 0A.10
+ * @edit 18-05-19
+ * - Upgraded DocBlock and file version
+ * @version 0A.50
  */
 class ProjectHandler extends \GIndie\ProjectHandler
 {
+
     /**
      * 
      * @return string
-     * @since GI-CMMN.00.01
+     * @since 18-05-18
+     */
+    public static function versions()
+    {
+        $rtnArray = parent::versions();
+        //AlphaFive
+        $rtnArray[\hexdec("0A.50")]["description"] = "Upgraded DocBlock and file version";
+        $rtnArray[\hexdec("0A.50")]["code"] = "AlphaFive";
+        $rtnArray[\hexdec("0A.50")]["threshold"] = "0A.50";
+        \ksort($rtnArray);
+        return $rtnArray;
+    }
+
+    /**
+     * 
+     * @return string
+     * @since 18-02-24
      */
     public static function autoloaderFilenameDPR()
     {
@@ -35,7 +56,7 @@ class ProjectHandler extends \GIndie\ProjectHandler
     /**
      * 
      * @return string
-     * @since GI-CMMN.00.01
+     * @since 18-02-24
      */
     public static function pathToSourceCode()
     {
@@ -45,7 +66,7 @@ class ProjectHandler extends \GIndie\ProjectHandler
     /**
      * 
      * @return string
-     *  @since GI-CMMN.00.01
+     *  @since 18-02-24
      */
     public static function projectName()
     {
@@ -55,7 +76,7 @@ class ProjectHandler extends \GIndie\ProjectHandler
     /**
      * 
      * @return null
-     *  @since GI-CMMN.00.01
+     *  @since 18-02-24
      */
     public static function projectNamespace()
     {
@@ -65,7 +86,7 @@ class ProjectHandler extends \GIndie\ProjectHandler
     /**
      * 
      * @return string
-     *  @since GI-CMMN.00.01
+     *  @since 18-02-24
      */
     public static function projectVendor()
     {

@@ -12,8 +12,7 @@ namespace GIndie\Common\Parser;
  * 
  * @copyright (C) 2017 Angel Sierra Vega. Grupo INDIE.
  *
- * @package GrupoIndie
- * @subpackage Common
+ * @package Common
  *
  * @author Angel Sierra Vega <angel.sierra@grupoindie.com>
  * @version GI-CMMN.00.00 17-12-24
@@ -23,6 +22,11 @@ namespace GIndie\Common\Parser;
  * - Functional class
  * @edit GI-CMMN.00.03 18-01-01
  * - Updated visibility of methods for inheritance
+ * @edit 18-05-19
+ * - Upgraded DocBlock
+ * @version 0A.35
+ * @todo
+ * - Upgrade file versions
  */
 class DocComment
 {
