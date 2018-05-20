@@ -4,7 +4,7 @@
  * GICommon - Iterator 2017-12-24
  * @copyright (C) 2017 Angel Sierra Vega. Grupo INDIE.
  *
- * @package Common
+ * @package GIndie\Common\PHP
  */
 
 namespace GIndie\Common\PHP;

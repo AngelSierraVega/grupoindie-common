@@ -4,7 +4,7 @@
  * GICommon - InterfaceINIHandler
  * @copyright (C) 2017 Angel Sierra Vega. Grupo INDIE.
  *
- * @package Common
+ * @package GIndie\Common\INIHandler
  */
 
 namespace GIndie\INIHandler;

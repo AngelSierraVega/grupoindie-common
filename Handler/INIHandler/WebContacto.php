@@ -6,7 +6,7 @@
  * @author Angel Sierra Vega <angel.sierra@grupoindie.com>
  * @copyright (C) 2018 Angel Sierra Vega. Grupo INDIE.
  *
- * @package Common
+ * @package GIndie\Common\INIHandler
  *
  * @version GI-CMMN.00.00 18-02-25 Empty [class/trait/interface/file] created.
  */

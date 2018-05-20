@@ -12,7 +12,7 @@ namespace GIndie\Common\Parser;
  * @author Angel Sierra Vega <angel.sierra@grupoindie.com>
  * @copyright (C) 2018 Angel Sierra Vega. Grupo INDIE.
  *
- * @package Common
+ * @package GIndie\Common\Parser
  *
  * @version GI-CMMN.00.00 18-02-06 Empty class created.
  * @edit GI-CMMN.00.01

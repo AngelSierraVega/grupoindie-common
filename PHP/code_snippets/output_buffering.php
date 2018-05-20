@@ -4,7 +4,7 @@
  * GICommon - output_buffering 
  * @copyright (C) 2017 Angel Sierra Vega. Grupo INDIE.
  *
- * @package Common
+ * @package GIndie\Common\PHP
  *
  * @version GI-CMMN.00.00 2017-12-26 Created file.
  * @edit 18-05-19

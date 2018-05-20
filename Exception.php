@@ -4,7 +4,7 @@
  * GICommon - Exception 2017-12-23
  * @copyright (C) 2017 Angel Sierra Vega. Grupo INDIE.
  *
- * @package Common
+ * @package GIndie\Common
  */
 
 namespace GIndie;

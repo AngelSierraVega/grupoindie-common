@@ -8,7 +8,7 @@ namespace GIndie\Common\PHP;
  * @author Angel Sierra Vega <angel.sierra@grupoindie.com>
  * @copyright (C) 2018 Angel Sierra Vega. Grupo INDIE.
  *
- * @package Common
+ * @package GIndie\Common\PHP
  *
  * @version GI-CMMN.00.00 18-02-24 Empty class created.
  * @edit GI-CMMN.00.01

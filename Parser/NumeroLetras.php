@@ -25,7 +25,7 @@ namespace GIndie\Common\Parser;
  * 
  * @copyright (C) 2018 Angel Sierra Vega. Grupo INDIE.
  *
- * @package Common
+ * @package GIndie\Common\Parser
  *
  * @version GI-CMMN.00.00 18-01-07 ClassTrait created.
  * @edit GI-CMMN.00.01 18-01-07

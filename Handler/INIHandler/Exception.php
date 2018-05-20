@@ -4,7 +4,7 @@
  * GICommon - Exception 
  * @copyright (C) 2017 Angel Sierra Vega. Grupo INDIE.
  *
- * @package Common
+ * @package GIndie\Common\INIHandler
  * @since 17-12-23
  */
 

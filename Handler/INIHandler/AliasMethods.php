@@ -8,7 +8,7 @@ namespace GIndie\INIHandler;
  * @author Angel Sierra Vega <angel.sierra@grupoindie.com>
  * @copyright (C) 2018 Angel Sierra Vega. Grupo INDIE.
  *
- * @package Common
+ * @package GIndie\Common\INIHandler
  *
  * @since 18-01-05
  * @edit 18-01-05

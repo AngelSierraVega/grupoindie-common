@@ -6,7 +6,7 @@
  * @author Angel Sierra Vega <angel.sierra@grupoindie.com>
  * @copyright (C) 2018 Angel Sierra Vega. Grupo INDIE.
  *
- * @package Common
+ * @package GIndie\Common
  *
  * @since 17-12-23
  * @edit 17-12-23
