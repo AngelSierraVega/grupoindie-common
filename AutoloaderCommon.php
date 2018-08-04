@@ -7,25 +7,9 @@
  * @copyright (C) 2018 Angel Sierra Vega. Grupo INDIE.
  *
  * @package GIndie\Common
- *
+ * 
+ * @version 0B.00
  * @since 17-12-23
- * @edit 17-12-23
- * - Added code from FacturaElectronica
- * @version 0A.00
- * @edit 18-02-27
- * - Updated filename from autoloader.php
- * - Updated namespace
- * - Handle requiere for INIHandler and ProjectHandler
- * @version 0A.10
- * @edit 18-05-13
- * - Deprecated funcionality for ProjectHandler.
- * @version 0A.20
- * @edit 18-05-19
- * - Upgraded DocBlock and file version
- * @version 0A.50
- * @todo
- * - Create Interface (sepparated project) for Mysqldump
- * - Remove functionality for Mysqldump
  */
 
 namespace GIndie\Common;
@@ -34,8 +18,22 @@ require_once 'Mysqldump.php';
 
 /**
  * Autoloader function
- * @since 17-12-23
+ * 
+ * @edit 17-12-23
+ * - Added code from FacturaElectronica
  * @edit 18-02-27
+ * - Updated filename from autoloader.php
+ * - Updated namespace
+ * - Handle requiere for INIHandler and ProjectHandler
+ * @edit 18-05-13
+ * - Deprecated funcionality for ProjectHandler.
+ * @edit 18-05-19
+ * - Upgraded DocBlock and file version
+ * @edit 18-08-04
+ * - Upgraded DocBlock
+ * @todo
+ * - Create Interface (sepparated project) for Mysqldump
+ * - Remove functionality for Mysqldump
  */
 \spl_autoload_register(function($className) {
 
@@ -48,9 +46,6 @@ require_once 'Mysqldump.php';
                 require_once($edited);
             }
             break;
-//        case \Ifsnop\Mysqldump\Mysqldump::class:
-//            require_once 'Mysqldump.php';
-//            break;
         default:
             $requestedFile = \explode("\\", $className);
             $requestedFile = \array_pop($requestedFile) . ".php";
@@ -69,23 +64,6 @@ require_once 'Mysqldump.php';
                     }
                 }
             }
-        /**
-         * @deprecated since 18-05-13
-         * - Moved classes into sepparated projects
-         */
-//            if (\is_int(\strpos($className, 'GIndie\\ProjectHandler'))) {
-//                $edited = \substr($className, \strlen($requestedNamespace) + \strrpos($className, $requestedNamespace));
-//                $edited = \str_replace("\\", \DIRECTORY_SEPARATOR, __DIR__ . \DIRECTORY_SEPARATOR . "Handler" . $edited) . ".php";
-//                if (\is_readable($edited)) {
-//                    require_once($edited);
-//                } else {
-//                    $edited = \substr($className, \strlen($requestedNamespace) + \strrpos($className, $requestedNamespace));
-//                    $edited = \str_replace("\\", \DIRECTORY_SEPARATOR, __DIR__ . \DIRECTORY_SEPARATOR . "Handler" . \DIRECTORY_SEPARATOR . "ProjectHandler" . \DIRECTORY_SEPARATOR . $edited) . ".php";
-//                    if (\is_readable($edited)) {
-//                        require_once($edited);
-//                    }
-//                }
-//            }
     }
 });
 

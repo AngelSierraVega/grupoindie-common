@@ -1,19 +1,24 @@
 <?php
 
-namespace GIndie\INIHandler;
-
 /**
- * DVLP-GICommon - WebAvisoPrivacidad
- * 
- * @link <http://www.huffingtonpost.com.mx/p/huffpost-mexico-politica-de-privacidad>
+ * GI-Common-DVLP - WebAvisoPrivacidad
  *
  * @author Angel Sierra Vega <angel.sierra@grupoindie.com>
  * @copyright (C) 2018 Angel Sierra Vega. Grupo INDIE.
  *
  * @package GIndie\Common\INIHandler
  *
- * @version GI-CMMN.00.00 18-02-25 Empty class created.
- * @edit GI-CMMN.00.01
+ * @version 0B.00
+ * @since 18-02-25
+ */
+
+namespace GIndie\INIHandler;
+
+/**
+ * 
+ * @link <http://www.huffingtonpost.com.mx/p/huffpost-mexico-politica-de-privacidad>
+ * 
+ * @edit 18-02-25
  * - Class extends \GIndie\INIHandler
  * - Created getCambios(), getContacto(), requiredVars(), getIntro()
  * - Created getNombre(), getExcepciones(), getConfExcIntro()
@@ -23,9 +28,10 @@ namespace GIndie\INIHandler;
  * - Abstract class
  * @edit 18-05-19
  * - Upgraded DocBlock
- * @version 0A.35
- * @todo
- * - Upgrade file versions
+ * @edit 18-05-04
+ * - Upgraded file versions
+ * @edit 18-08-04
+ * - Upgraded DocBlock and versions
  */
 abstract class WebAvisoPrivacidad extends \GIndie\INIHandler
 {
@@ -33,7 +39,7 @@ abstract class WebAvisoPrivacidad extends \GIndie\INIHandler
     /**
      * 
      * @return string
-     * @since GI-CMMN.00.01
+     * @since 18-02-25
      */
     public static function getCambios()
     {
@@ -45,7 +51,7 @@ abstract class WebAvisoPrivacidad extends \GIndie\INIHandler
     /**
      * 
      * @return string
-     * @since GI-CMMN.00.01
+     * @since 18-02-25
      */
     public static function getContacto()
     {
@@ -58,7 +64,7 @@ abstract class WebAvisoPrivacidad extends \GIndie\INIHandler
     /**
      * 
      * @return array
-     * @since GI-CMMN.00.01
+     * @since 18-02-25
      */
     public static function requiredVars()
     {
@@ -75,7 +81,7 @@ abstract class WebAvisoPrivacidad extends \GIndie\INIHandler
     /**
      * 
      * @return string
-     * @since GI-CMMN.00.01
+     * @since 18-02-25
      */
     public static function getNombre()
     {
@@ -85,7 +91,7 @@ abstract class WebAvisoPrivacidad extends \GIndie\INIHandler
     /**
      * 
      * @return array
-     * @since GI-CMMN.00.01
+     * @since 18-02-25
      */
     public static function getExcepciones()
     {
@@ -111,7 +117,7 @@ abstract class WebAvisoPrivacidad extends \GIndie\INIHandler
     /**
      * 
      * @return string
-     * @since GI-CMMN.00.01
+     * @since 18-02-25
      */
     public static function getConfExcIntro()
     {
@@ -121,7 +127,7 @@ abstract class WebAvisoPrivacidad extends \GIndie\INIHandler
     /**
      * 
      * @return string
-     * @since GI-CMMN.00.01
+     * @since 18-02-25
      */
     public static function getConfidencialidadIntro()
     {
@@ -131,7 +137,7 @@ abstract class WebAvisoPrivacidad extends \GIndie\INIHandler
     /**
      * 
      * @return string
-     * @since GI-CMMN.00.01
+     * @since 18-02-25
      */
     public static function getConfidencialidadNota()
     {
@@ -141,7 +147,7 @@ abstract class WebAvisoPrivacidad extends \GIndie\INIHandler
     /**
      * 
      * @return string
-     * @since GI-CMMN.00.01
+     * @since 18-02-25
      */
     public static function getUsoDatosNota()
     {
@@ -151,7 +157,7 @@ abstract class WebAvisoPrivacidad extends \GIndie\INIHandler
     /**
      * 
      * @return array
-     * @since GI-CMMN.00.01
+     * @since 18-02-25
      */
     public static function getInfRecUsuario()
     {
@@ -177,7 +183,7 @@ abstract class WebAvisoPrivacidad extends \GIndie\INIHandler
     /**
      * 
      * @return array
-     * @since GI-CMMN.00.01
+     * @since 18-02-25
      */
     public static function getUsoDeDatos()
     {
@@ -203,7 +209,7 @@ abstract class WebAvisoPrivacidad extends \GIndie\INIHandler
     /**
      * 
      * @return string
-     * @since GI-CMMN.00.01
+     * @since 18-02-25
      */
     public static function getInformacionRecopiladaUsuarioFinalIntro()
     {
@@ -213,7 +219,7 @@ abstract class WebAvisoPrivacidad extends \GIndie\INIHandler
     /**
      * 
      * @return string
-     * @since GI-CMMN.00.01
+     * @since 18-02-25
      */
     public static function getAmbito()
     {
@@ -223,7 +229,7 @@ abstract class WebAvisoPrivacidad extends \GIndie\INIHandler
     /**
      * 
      * @return string
-     * @since GI-CMMN.00.01
+     * @since 18-02-25
      */
     public static function getVigor()
     {
@@ -233,7 +239,7 @@ abstract class WebAvisoPrivacidad extends \GIndie\INIHandler
     /**
      * 
      * @return string
-     * @since GI-CMMN.00.01
+     * @since 18-02-25
      */
     public static function getIntro()
     {

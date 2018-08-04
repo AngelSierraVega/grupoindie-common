@@ -1,46 +1,42 @@
 <?php
 
 /**
- * GICommon - NumeroLetras
+ * GI-Common-DVLP - NumeroLetras
+ *
+ * @author ULTIMINIO RAMOS GALÁN <uramos@gmail.com>
+ *
+ * @package GIndie\Common\Parser
+ *
+ * @version 0B.00
+ * @since 09-05-10
  */
 
 namespace GIndie\Common\Parser;
 
-//------    CONVERTIR NUMEROS A LETRAS         ---------------
-//------    Máxima cifra soportada: 18 dígitos con 2 decimales
-//------    999,999,999,999,999,999.99
-// NOVECIENTOS NOVENTA Y NUEVE MIL NOVECIENTOS NOVENTA Y NUEVE BILLONES
-// NOVECIENTOS NOVENTA Y NUEVE MIL NOVECIENTOS NOVENTA Y NUEVE MILLONES
-// NOVECIENTOS NOVENTA Y NUEVE MIL NOVECIENTOS NOVENTA Y NUEVE PESOS 99/100 M.N.
-//------    Creada por:                        ---------------
-//------             ULTIMINIO RAMOS GALÁN     ---------------
-//------            uramos@gmail.com           ---------------
-//------    10 de junio de 2009. México, D.F.  ---------------
-//------    PHP Version 4.3.1 o mayores (aunque podría funcionar en versiones anteriores, tendrías que probar)
 /**
- * Description of NumeroLetras
+ * CONVERTIR NUMEROS A LETRAS
  * 
- *
- * @author Angel Sierra Vega <angel.sierra@grupoindie.com>
+ * PHP Version 4.3.1 o mayores (aunque podría funcionar en versiones anteriores, 
+ * tendrías que probar)
  * 
- * @copyright (C) 2018 Angel Sierra Vega. Grupo INDIE.
- *
- * @package GIndie\Common\Parser
- *
- * @version GI-CMMN.00.00 18-01-07 ClassTrait created.
- * @edit GI-CMMN.00.01 18-01-07
+ * Máxima cifra soportada: 18 dígitos con 2 decimales 999,999,999,999,999,999.99
+ * NOVECIENTOS NOVENTA Y NUEVE MIL NOVECIENTOS NOVENTA Y NUEVE BILLONES
+ * NOVECIENTOS NOVENTA Y NUEVE MIL NOVECIENTOS NOVENTA Y NUEVE MILLONES
+ * NOVECIENTOS NOVENTA Y NUEVE MIL NOVECIENTOS NOVENTA Y NUEVE PESOS 99/100 M.N.
+
+ * @edit 18-01-07 18-01-07
+ * - ClassTrait created
  * - Copied class from WebServiceTimbrado
  * @edit 18-05-19
  * - Upgraded DocBlock
- * @version 0A.35
- * @todo
- * - Upgrade file versions
+ * @edit 18-08-04
+ * - Upgraded DocBlock
  */
 class NumeroLetras
 {
 
     /**
-     * @since GI-CMMN.00.01
+     * @since 18-01-07
      * @param type $xcifra
      * @return type
      */
@@ -192,7 +188,7 @@ class NumeroLetras
 // END FUNCTION
 
     /**
-     * @since GI-CMMN.00.01
+     * @since 18-01-07
      * @param type $xx
      * @return string
      */

@@ -1,67 +1,63 @@
 <?php
 
 /**
- * GICommon - INIHandler 2017-12-23
- * @copyright (C) 2017 Angel Sierra Vega. Grupo INDIE.
+ * GI-Common-DVLP - INIHandler
+ *
+ * @author Angel Sierra Vega <angel.sierra@grupoindie.com>
+ * @copyright (C) 2018 Angel Sierra Vega. Grupo INDIE.
  *
  * @package GIndie\Common\INIHandler
+ *
+ * @version 0B.00
+ * @since 18-08-04
  */
 
 namespace GIndie;
 
 /**
- * Description of INIHandler
- *
- * @author Angel Sierra Vega <angel.sierra@grupoindie.com>
- * @version GI-CMMN.00.00
- * @edit GI-CMMN.00.01
+ * @edit 17-12-23
  * - Copied class from external project DBHandler
- * @edit GI-CMMN.00.02
  * - getValue(): Method ini_get renamed to getValue due to PSR-1 violation.
  * - Deleted private static vars: $ini_filename, $ini_required_vars
  * - Implemented \GIndie\INIHandler\InterfaceINIHandler in class
- * @edit GI-CMMN.00.03
  * - Abstract class
  * - Implemented custom \GIndie\INIHandler\Exception in method: readINI(), validateVars()
- * @edit GI-CMMN.00.04
  * - Replaced static::$ini_data with self::$ini_data 
- * @edit GI-CMMN.00.05
  * - Method readINI(): static::pathToFile() used
- * @edit GI-CMMN.00.06 2017-12-26
+ * @edit 17-12-26
  * - Created method: validateDataArray()
  * - Updated method: readINI(), storeINI(), validateVars(), getCategoryValue()
- * @edit GI-CMMN.00.07 18-01-05
+ * @edit 18-01-05 
  * - Use trait AliasMethods
- * @edit GI-CMMN.00.08 18-01-07
+ * @edit 18-01-07 
  * - Created pathToFile()
  * - Updated getCategoryValue()
  * @edit 18-05-19
  * - Upgraded DocBlock
- * @version 0A.35
- * @todo
- * - Upgrade file versions
+ * @edit 18-08-04
+ * - Upgraded DocBlock and versions
  */
 abstract class INIHandler implements \GIndie\INIHandler\InterfaceINIHandler
 {
 
     /**
-     * @since GI-CMMN.00.07
+     * @since 18-01-05
      */
     use \GIndie\INIHandler\AliasMethods;
 
     /**
      * Gets the value from the specified variable
      * 
-     * @since GI-CMMN.00.01
+     * @since 17-12-23
      * 
      * @param string $category The category of the variable.
      * @param string $varname The name of the variable
      * 
      * @return mixed
-     * @edit GI-CMMN.00.02
+     * @edit 17-12-23
      * - Renamed to getCategoryValue from getValue
      * - Added parameter $category
-     * @edit GI-CMMN.00.08
+     * @edit 18-01-07
      * - Returns null if var is not setted.
      */
     public static function getCategoryValue($category, $varname)
@@ -73,7 +69,7 @@ abstract class INIHandler implements \GIndie\INIHandler\InterfaceINIHandler
     /**
      * 
      * @return string
-     * @since GI-CMMN.00.08
+     * @since 18-01-07
      */
     final public static function pathToFile()
     {
@@ -89,11 +85,11 @@ abstract class INIHandler implements \GIndie\INIHandler\InterfaceINIHandler
     /**
      * 
      * @throws \GIndie\INIHandler\Exception
-     * @since GI-CMMN.00.01
+     * @since 17-12-23
      * 
      * @return array The settings are returned as an associative array on success,
      * and <b>FALSE</b> on failure.
-     * @edit GI-CMMN.00.06
+     * @edit 17-12-26
      * - parse_ini_file now reads the categories from the file
      */
     private static function readINI()
@@ -107,11 +103,11 @@ abstract class INIHandler implements \GIndie\INIHandler\InterfaceINIHandler
 
     /**
      * 
-     * @since GI-CMMN.00.01
+     * @since 17-12-23
      * 
      * @return array The settings are returned as an associative array on success,
      * and <b>FALSE</b> on failure.
-     * @edit GI-CMMN.00.06
+     * @edit 17-12-26
      * - Commented session-save related code
      * @todo 
      * - Handle session store.
@@ -133,7 +129,7 @@ abstract class INIHandler implements \GIndie\INIHandler\InterfaceINIHandler
      * 
      * @param array $data
      * @return type
-     * @since GI-CMMN.00.06
+     * @since 17-12-26
      */
     private static function validateDataArray(array $data)
     {
@@ -145,11 +141,11 @@ abstract class INIHandler implements \GIndie\INIHandler\InterfaceINIHandler
     /**
      * 
      * @throws \Exception
-     * @since GI-CMMN.00.01
+     * @since 17-12-23
      * 
      * @return array The settings are returned as an associative array on success,
      * and <b>FALSE</b> on failure.
-     * @edit GI-CMMN.00.06
+     * @edit 17-12-26
      * - Validate sections functional
      * @todo 
      * - validate variables
@@ -213,7 +209,7 @@ abstract class INIHandler implements \GIndie\INIHandler\InterfaceINIHandler
     /**
      *
      * @var array 
-     * @since GI-CMMN.00.01
+     * @since 17-12-23
      */
     private static $ini_data = [];
 

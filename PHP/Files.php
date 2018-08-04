@@ -9,17 +9,36 @@
  * @package GIndie\Common\PHP
  *
  * @since 18-05-19
- * @version 0A.55
+ * @version 0B.00
  */
 
 namespace GIndie\Common\PHP;
 
 /**
  * Handles file behaviour in PHP
- * @version 0A.55
+ * @edit 18-08-02
+ * - Created createFileIfNotExists()
  */
 class Files
 {
+
+    /**
+     * 
+     * @param string $fullPathToFile
+     * @return bool <b>TRUE</b> if the file or directory specified by
+     * <i>filename</i> exists; <b>FALSE</b> otherwise.
+     * @since 18-08-02
+     */
+    public static function createFileIfNotExists($fullPathToFile)
+    {
+        if (!\file_exists($fullPathToFile)) {
+            $myfile = \fopen($fullPathToFile, 'wb') or die("Unable to open file!");
+            \fwrite($myfile, \pack("CCC", 0xef, 0xbb, 0xbf));
+            \fwrite($myfile, \utf8_encode("# AG: " . \date("c")));
+            \fclose($myfile);
+        }
+        return \file_exists($fullPathToFile);
+    }
 
     /**
      * 
@@ -48,9 +67,7 @@ class Files
      * @param int $flag
      * @return \RecursiveIteratorIterator
      */
-    public static function getRecursiveIteratorIterator($directoryPath,
-                                                        array $exclude = [],
-                                                        $flag = \RecursiveDirectoryIterator::SKIP_DOTS)
+    public static function getRecursiveIteratorIterator($directoryPath, array $exclude = [], $flag = \RecursiveDirectoryIterator::SKIP_DOTS)
     {
         $filter = function ($file, $key, $iterator) use ($exclude) {
             if (\in_array($file->getFilename(), $exclude)) {

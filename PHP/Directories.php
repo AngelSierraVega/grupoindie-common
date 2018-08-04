@@ -1,25 +1,26 @@
 <?php
 
-namespace GIndie\Common\PHP;
-
 /**
- * DVLP-GICommon - Directories
+ * GI-Common-DVLP - Directories
  *
  * @author Angel Sierra Vega <angel.sierra@grupoindie.com>
  * @copyright (C) 2018 Angel Sierra Vega. Grupo INDIE.
  *
  * @package GIndie\Common\PHP
  *
- * @version GI-CMMN.00.00 18-02-24 Empty class created.
- * @edit GI-CMMN.00.01
+ * @version 0B.00
+ * @since 18-02-24
+ */
+
+namespace GIndie\Common\PHP;
+
+/**
+ * @edit 18-02-24
  * - Created createFolderStructure()
- * @todo 
- * - Move class to Handler/
- * @edit 18-05-19
+ * @edit 18-08-04
  * - Upgraded DocBlock
- * @version 0A.35
  * @todo
- * - Upgrade file versions
+ * - Move class to Handler/
  */
 class Directories
 {
@@ -43,7 +44,7 @@ class Directories
     /**
      * 
      * @return boolean
-     * @since GI-CMMN.00.01
+     * @since 18-02-24
      */
     public static function createFolderStructure($baseDirectory, $folderStructure)
     {

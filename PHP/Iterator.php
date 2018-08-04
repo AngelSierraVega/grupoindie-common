@@ -1,10 +1,15 @@
 <?php
 
 /**
- * GICommon - Iterator 2017-12-24
- * @copyright (C) 2017 Angel Sierra Vega. Grupo INDIE.
+ * GI-Common-DVLP - Iterator
+ *
+ * @author Angel Sierra Vega <angel.sierra@grupoindie.com>
+ * @copyright (C) 2018 Angel Sierra Vega. Grupo INDIE.
  *
  * @package GIndie\Common\PHP
+ *
+ * @version 0B.00
+ * @since 17-12-24
  */
 
 namespace GIndie\Common\PHP;
@@ -14,27 +19,26 @@ namespace GIndie\Common\PHP;
  * 
  * @abstract
  * @author Angel Sierra Vega <angel.sierra@grupoindie.com>
- * @version GI.01.00
- * @version GI-CMMN.00.00
- * @edit GI-CMMN.00.01
+ * @edit 17-12-24
  * - Sources from external project SG-DML
- * @edit 18-05-19
+ * @edit 18-08-04
  * - Upgraded DocBlock
- * @version 0A.35
- * @todo
- * - Upgrade file versions
  */
 abstract class Iterator extends ArrayAccess implements \Iterator
 {
 
+    /**
+     *
+     * @var int  
+     */
     private $_position = 0;
 
     /**
      * 
      * Implementation for interface Iterator
      * 
-     * @since       GI.01.00
-     * @param       array $data [optional]
+     * @since 17-12-24
+     * @param array $data [optional]
      */
     public function __construct(array $data = [])
     {
@@ -45,8 +49,7 @@ abstract class Iterator extends ArrayAccess implements \Iterator
     /**
      * Implementation for interface Iterator
      * 
-     * @since       GI.01.00
-     * 
+     * @since 17-12-24
      */
     function rewind()
     {
@@ -54,11 +57,9 @@ abstract class Iterator extends ArrayAccess implements \Iterator
     }
 
     /**
-     * 
      * Implementation for interface Iterator
      * 
-     * @since       GI.01.00
-     * 
+     * @since 17-12-24
      */
     function current()
     {
@@ -66,10 +67,9 @@ abstract class Iterator extends ArrayAccess implements \Iterator
     }
 
     /**
-     * 
      * Implementation for interface Iterator
      * 
-     * @since       GI.01.00
+     * @since 17-12-24
      */
     function key()
     {
@@ -77,11 +77,9 @@ abstract class Iterator extends ArrayAccess implements \Iterator
     }
 
     /**
-     * 
      * Implementation for interface Iterator
      * 
-     * @since       GI.01.00
-     * 
+     * @since 17-12-24
      */
     function next()
     {
@@ -89,11 +87,9 @@ abstract class Iterator extends ArrayAccess implements \Iterator
     }
 
     /**
-     * 
      * Implementation for interface Iterator
      * 
-     * @since       GI.01.00
-     * 
+     * @since 17-12-24
      */
     function valid()
     {

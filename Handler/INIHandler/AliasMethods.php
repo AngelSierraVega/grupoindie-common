@@ -1,5 +1,17 @@
 <?php
 
+/**
+ * GI-Common-DVLP - Exception
+ *
+ * @author Angel Sierra Vega <angel.sierra@grupoindie.com>
+ * @copyright (C) 2018 Angel Sierra Vega. Grupo INDIE.
+ *
+ * @package GIndie\Common\INIHandler
+ *
+ * @version 0B.00
+ * @since 18-01-05
+ */
+
 namespace GIndie\INIHandler;
 
 /**
@@ -10,13 +22,12 @@ namespace GIndie\INIHandler;
  *
  * @package GIndie\Common\INIHandler
  *
- * @since 18-01-05
  * @edit 18-01-05
  * - Created getValue()
- * @version 0A.10
  * @edit 18-05-19
  * - Upgraded DocBlock and file version
- * @version 0A.50
+ * @edit 18-08-04
+ * - Upgraded DocBlock and versions
  */
 trait AliasMethods
 {

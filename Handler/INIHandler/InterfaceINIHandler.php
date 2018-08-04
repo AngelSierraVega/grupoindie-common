@@ -1,10 +1,15 @@
 <?php
 
 /**
- * GICommon - InterfaceINIHandler
- * @copyright (C) 2017 Angel Sierra Vega. Grupo INDIE.
+ * GI-Common-DVLP - InterfaceINIHandler
+ *
+ * @author Angel Sierra Vega <angel.sierra@grupoindie.com>
+ * @copyright (C) 2018 Angel Sierra Vega. Grupo INDIE.
  *
  * @package GIndie\Common\INIHandler
+ *
+ * @version 0B.00
+ * @since 17-12-23
  */
 
 namespace GIndie\INIHandler;
@@ -12,32 +17,28 @@ namespace GIndie\INIHandler;
 /**
  *
  * @author Angel Sierra Vega <angel.sierra@grupoindie.com>
- * 
- * @since 17-12-23
- * @version GI-CMMN.00.01
- * @edit GI-CMMN.00.02
+ * @edit 17-12-23
  * - pathToFile() added
- * @edit GI-CMMN.00.03
+ * @edit 17-12-23
  * - Added comment on pathToFile()
  * @edit 18-05-19
  * - Upgraded DocBlock
- * @version 0A.35
- * @todo
- * - Upgrade file versions
+ * @edit 18-08-04
+ * - Upgraded DocBlock and versions
  */
 interface InterfaceINIHandler
 {
 
     /**
      * 
-     * @since GI-CMMN.00.01
+     * @since 17-12-23
      * @return string
      */
     public static function fileName();
 
     /**
      * 
-     * @since GI-CMMN.00.01
+     * @since 17-12-23
      * @return array
      */
     public static function requiredVars();
@@ -47,7 +48,7 @@ interface InterfaceINIHandler
      * For standard class use: return __DIR__ . "\\" . static::fileName() . ".ini";
      * For phar use: return \dirname(\Phar::running(false)) . "/" . static::fileName() . ".ini";
      * 
-     * @since GI-CMMN.00.02
+     * @since 17-12-23
      * @return string
      */
     public static function pathToFile();

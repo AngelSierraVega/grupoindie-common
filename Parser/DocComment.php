@@ -1,32 +1,31 @@
 <?php
 
+
 /**
- * GICommon - DocComment
- * 
+ * GI-Common-DVLP - DocComment
+ *
+ * @author Angel Sierra Vega <angel.sierra@grupoindie.com>
+ * @copyright (C) 2018 Angel Sierra Vega. Grupo INDIE.
+ *
+ * @package GIndie\Common\Parser
+ *
+ * @version 0B.00
+ * @since 18-08-04
  */
 
 namespace GIndie\Common\Parser;
 
 /**
- * Description of DocComment
  * 
- * @copyright (C) 2017 Angel Sierra Vega. Grupo INDIE.
- *
- * @package GIndie\Common\Parser
- *
- * @author Angel Sierra Vega <angel.sierra@grupoindie.com>
- * @version GI-CMMN.00.00 17-12-24
- * @edit GI-CMMN.00.01
+ * @edit 17-12-24
  *  - Added main functions
- * @edit GI-CMMN.00.02
  * - Functional class
- * @edit GI-CMMN.00.03 18-01-01
+ * @edit 18-01-01
  * - Updated visibility of methods for inheritance
  * @edit 18-05-19
  * - Upgraded DocBlock
- * @version 0A.35
- * @todo
- * - Upgrade file versions
+ * @edit 18-08-04
+ * - Upgraded DocBlock
  */
 class DocComment
 {
@@ -34,7 +33,7 @@ class DocComment
     /**
      *
      * @var type 
-     * @since GI-CMMN.00.01
+     * @since 17-12-24
      * @todo
      */
     private static $validTags = ["param", "return", "since", "edit", "version", "author"];
@@ -44,9 +43,9 @@ class DocComment
      * @param type $tagname
      * @param type $value
      * @return type
-     * @since GI-CMMN.00.01
-     * @edit GI-CMMN.00.02
-     * @edit GI-CMMN.00.03
+     * @since 17-12-24
+     * @edit 17-12-24
+     * @edit 18-01-01
      */
     protected function parseTag($tagname, $value)
     {
@@ -68,8 +67,8 @@ class DocComment
      * 
      * @param array $parse
      * @return array
-     * @since GI-CMMN.00.01
-     * @edit GI-CMMN.00.02
+     * @since 17-12-24
+     * @edit 17-12-24
      */
     private static function data(array $parse)
     {
@@ -95,23 +94,23 @@ class DocComment
     /**
      *
      * @var array 
-     * @since GI-CMMN.00.02
-     * @edit GI-CMMN.00.03
+     * @since 17-12-24
+     * @edit 18-01-01
      */
     protected $data;
 
     /**
      *
      * @var array 
-     * @since GI-CMMN.00.02
-     * @edit GI-CMMN.00.03
+     * @since 17-12-24
+     * @edit 18-01-01
      */
     protected $parsed;
 
     /**
      * 
      * @param string $comment
-     * @since GI-CMMN.00.02
+     * @since 17-12-24
      */
     protected function __construct($comment)
     {
@@ -124,8 +123,8 @@ class DocComment
      * 
      * @param string $string
      * @return array
-     * @since GI-CMMN.00.01
-     * @edit GI-CMMN.00.02
+     * @since 17-12-24
+     * @edit 17-12-24
      */
     private static function prepareString($string)
     {
@@ -135,8 +134,8 @@ class DocComment
     /**
      * Creates the final assoc array
      * @return array
-     * @since GI-CMMN.00.01
-     * @edit GI-CMMN.00.02
+     * @since 17-12-24
+     * @edit 17-12-24
      */
     private function parse()
     {
@@ -164,8 +163,8 @@ class DocComment
      * 
      * @param string $comment
      * @return array
-     * @since GI-CMMN.00.01
-     * @edit GI-CMMN.00.02
+     * @since 17-12-24
+     * @edit 17-12-24
      */
     public static function parseFromString($comment)
     {

@@ -10,7 +10,9 @@
  * @author   Diego Torres <ifsnop@github.com>
  * @license  http://www.gnu.org/copyleft/gpl.html GNU General Public License
  * @link     https://github.com/ifsnop/mysqldump-php
- * @version 0A.00
+ * @version 0B.00
+ * @todo
+ * - Remove from common, create sepparated interface
  */
 
 namespace Ifsnop\Mysqldump;

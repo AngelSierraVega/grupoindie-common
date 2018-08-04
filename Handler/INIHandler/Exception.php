@@ -1,20 +1,20 @@
 <?php
 
 /**
- * GICommon - Exception 
- * @copyright (C) 2017 Angel Sierra Vega. Grupo INDIE.
+ * GI-Common-DVLP - Exception
+ *
+ * @author Angel Sierra Vega <angel.sierra@grupoindie.com>
+ * @copyright (C) 2018 Angel Sierra Vega. Grupo INDIE.
  *
  * @package GIndie\Common\INIHandler
+ *
+ * @version 0B.00
  * @since 17-12-23
  */
 
 namespace GIndie\INIHandler;
 
 /**
- * Description of Exception
- *
- * @author Angel Sierra Vega <angel.sierra@grupoindie.com>
- * 
  * @edit 17-12-23
  * - Clase prototipo
  * - Int constant. Updated __construct()
@@ -23,10 +23,10 @@ namespace GIndie\INIHandler;
  * - Created method: requiredVariable(), handleMessage()
  * - const REQUIRED_VAR moved from GIndie\Exception
  * - Updated method: handleMessage()
- * @version 0A.10
  * @edit 18-05-19
  * - Upgraded DocBlock and file version
- * @version 0A.50
+ * @edit 18-08-04
+ * - Upgraded DocBlock and versions
  */
 class Exception extends \GIndie\Exception
 {

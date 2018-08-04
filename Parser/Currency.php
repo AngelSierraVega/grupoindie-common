@@ -1,33 +1,30 @@
 <?php
 
 /**
- * DVLP-GICommon - Currency
- */
-
-namespace GIndie\Common\Parser;
-
-/**
- * Description of Currency
+ * GI-Common-DVLP - Currency
  *
  * @author Angel Sierra Vega <angel.sierra@grupoindie.com>
  * @copyright (C) 2018 Angel Sierra Vega. Grupo INDIE.
  *
  * @package GIndie\Common\Parser
  *
- * @version GI-CMMN.00.00 18-02-06 Empty class created.
- * @edit GI-CMMN.00.01
+ * @version 0B.00
+ * @since 18-02-06
+ */
+
+namespace GIndie\Common\Parser;
+
+/**
+ * @edit 18-02-06
  * - Created format(), formatFull()
- * @edit 18-05-19
+ * @edit 18-08-04
  * - Upgraded DocBlock
- * @version 0A.35
- * @todo
- * - Upgrade file versions
  */
 class Currency
 {
 
     /**
-     * @since GI-CMMN.00.01
+     * @since 18-02-06
      * @param mixed $value
      * @return string
      */
@@ -35,15 +32,15 @@ class Currency
     {
         return \bcadd(\strval($value), 0, 2);
     }
-    
+
     /**
-     * @since GI-CMMN.00.01
+     * @since 18-02-06
      * @param mixed $value
      * @return string
      */
     public static function formatFull($value)
     {
-        return "$&nbsp;". static::format($value);
+        return "$&nbsp;" . static::format($value);
     }
 
 }
