@@ -8,7 +8,7 @@
  *
  * @package GIndie\Common\Components
  *
- * @version 0B.00
+ * @version 0B.03
  * @since 18-02-24
  */
 
@@ -26,8 +26,10 @@ namespace GIndie\Common;
  * - Upgraded DocBlock and file version
  * @edit 18-08-04
  * - Upgraded DocBlock
+ * @edit 18-09-18
+ * - Class extends \GIndie\ProjectHandler\AbstractProjectHandler
  */
-class ProjectHandler extends \GIndie\ProjectHandler
+class ProjectHandler extends \GIndie\ProjectHandler\AbstractProjectHandler
 {
 
     /**
