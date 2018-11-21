@@ -1,0 +1,40 @@
+Parser\Fecha
+Parser\Moneda
+
+-------------------------------PROJECT---------------------------------|
+\GIndie\Common
+18-12-31 v:0A.F3 LOC:4119
+ABS(6) CLA(12) INT(1) SCR(2) TRA(1) LOG(2) NDF(0) 
+-------------------------------VERSIONS--------------------------------|
+[0A.00] AlphaCero....| Functional project
+[0A.50] AlphaFive....| Upgraded DocBlock and file version
+[0B.00] BetaCero.....| Main funcionality
+[0B.70] BetaOne......| Unit test
+[0C.00] One..........| Final version
+--------------------------------FILE-----------------------------|--V--|
+[SCR] AutoloaderCommon.php.......................................|0B.00|
+[CLA] Exception.php..............................................|0B.00|
+[CLA] PHP\Date.php...............................................|0C.00|
+[LOG] Components\ProjectHandler\current.log......................|NDFND|
+[LOG] Components\ProjectHandler\v0AF3.log........................|NDFND|
+[TRA] Handler\INIHandler\AliasMethods.php........................|0B.00|
+[CLA] Handler\INIHandler\Exception.php...........................|0B.00|
+[INT] Handler\INIHandler\InterfaceINIHandler.php.................|0B.00|
+[ABS] Handler\INIHandler\WebAvisoPrivacidad.php..................|0B.00|
+[CLA] Handler\INIHandler\WebContacto.php.........................|NDFND|
+[ABS] Handler\INIHandler\WebTerminosServicio.php.................|0B.00|
+[ABS] Handler\INIHandler.php.....................................|0B.00|
+[ABS] Mysqldump.php..............................................|0B.00|
+[CLA] Parser\Currency.php........................................|0B.00|
+[CLA] Parser\DocComment.php......................................|0B.00|
+[CLA] Parser\Moneda.php..........................................|0A.00|
+[CLA] Parser\NumeroLetras.php....................................|0B.00|
+[CLA] Parser\Fecha.php...........................................|0A.00|
+[ABS] PHP\ArrayAccess.php........................................|0B.00|
+[SCR] PHP\code_snippets\output_buffering.php.....................|0B.00|
+[CLA] PHP\Directories.php........................................|0B.00|
+[CLA] PHP\Files.php..............................................|0B.00|
+[ABS] PHP\Iterator.php...........................................|0B.00|
+[CLA] ProjectHandler.php.........................................|0A.F3|
+-----------------------------------------------------------------------|
+ \GIndie\Common v 0A.F3

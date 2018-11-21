@@ -8,7 +8,7 @@
  *
  * @package GIndie\Common\Components
  *
- * @version 0B.03
+ * @version 0A.F3
  * @since 18-02-24
  */
 
