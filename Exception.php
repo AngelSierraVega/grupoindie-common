@@ -156,6 +156,8 @@ class Exception extends \Exception
                 break;
             case static::FILE_NOT_FOUND:
                 $this->fileFullPath = $param1;
+                var_dump($param1);
+                \trigger_error("File not found {$param1}", \E_USER_ERROR);
                 $message = static::$constants[static::class][$constant] . ": " . $this->fileFullPath;
                 break;
             case static::FILE_FORMAT:

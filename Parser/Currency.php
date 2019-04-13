@@ -8,7 +8,7 @@
  *
  * @package GIndie\Common\Parser
  *
- * @version 0B.00
+ * @version 0B.80
  * @since 18-02-06
  */
 
@@ -19,6 +19,8 @@ namespace GIndie\Common\Parser;
  * - Created format(), formatFull()
  * @edit 18-08-04
  * - Upgraded DocBlock
+ * @edit 19-04-12
+ * - Upgraded format. Use round
  */
 class Currency
 {
@@ -27,10 +29,11 @@ class Currency
      * @since 18-02-06
      * @param mixed $value
      * @return string
+     * @edit 19-04-12
      */
     public static function format($value)
     {
-        return \bcadd(\strval($value), 0, 2);
+        return \number_format(\round($value, 2), 2, ".", ",");
     }
 
     /**
