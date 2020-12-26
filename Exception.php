@@ -4,12 +4,14 @@
  * GI-Common-DVLP - Exception
  *
  * @author Angel Sierra Vega <angel.sierra@grupoindie.com>
- * @copyright (C) 2018 Angel Sierra Vega. Grupo INDIE.
+ * @copyright (CC) 2020 Angel Sierra Vega. Grupo INDIE.
  *
  * @package GIndie\Common
  *
  * @version 0B.00
  * @since 17-12-23
+ * 
+ * @todo Deprecate class ?
  */
 
 namespace GIndie;

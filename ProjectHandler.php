@@ -4,11 +4,11 @@
  * DVLP-GICommon - CommonProjectHandler
  *
  * @author Angel Sierra Vega <angel.sierra@grupoindie.com>
- * @copyright (C) 2018 Angel Sierra Vega. Grupo INDIE.
+ * @copyright (CC) 2020 Angel Sierra Vega. Grupo INDIE.
  *
  * @package GIndie\Common\Components
  *
- * @version 0A.F3
+ * @version 0B.00
  * @since 18-02-24
  */
 
@@ -53,16 +53,6 @@ class ProjectHandler extends \GIndie\ProjectHandler\AbstractProjectHandler
         
         \ksort($rtnArray);
         return $rtnArray;
-    }
-
-    /**
-     * 
-     * @return string
-     * @since 18-02-24
-     */
-    public static function autoloaderFilenameDPR()
-    {
-        return "autoloader.php";
     }
 
     /**

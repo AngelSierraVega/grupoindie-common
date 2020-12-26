@@ -4,7 +4,7 @@
  * GI-Common-DVLP - WebTerminosServicio
  *
  * @author Angel Sierra Vega <angel.sierra@grupoindie.com>
- * @copyright (C) 2018 Angel Sierra Vega. Grupo INDIE.
+ * @copyright (CC) 2020 Angel Sierra Vega. Grupo INDIE.
  *
  * @package GIndie\Common\Components
  *
@@ -20,7 +20,7 @@ namespace GIndie\INIHandler;
  * @link <http://www.huffingtonpost.com.mx/p/huffpost-mexico-terminos>
  *
  * @author Angel Sierra Vega <angel.sierra@grupoindie.com>
- * @copyright (C) 2018 Angel Sierra Vega. Grupo INDIE.
+ * @copyright (CC) 2020 Angel Sierra Vega. Grupo INDIE.
  *
  * @package GIndie\Common\INIHandler
  *

@@ -4,7 +4,7 @@
  * GI-Common-DVLP - Exception
  *
  * @author Angel Sierra Vega <angel.sierra@grupoindie.com>
- * @copyright (C) 2018 Angel Sierra Vega. Grupo INDIE.
+ * @copyright (CC) 2020 Angel Sierra Vega. Grupo INDIE.
  *
  * @package GIndie\Common\INIHandler
  *
@@ -18,7 +18,7 @@ namespace GIndie\INIHandler;
  * Description of AliasMethods
  *
  * @author Angel Sierra Vega <angel.sierra@grupoindie.com>
- * @copyright (C) 2018 Angel Sierra Vega. Grupo INDIE.
+ * @copyright (CC) 2020 Angel Sierra Vega. Grupo INDIE.
  *
  * @package GIndie\Common\INIHandler
  *
