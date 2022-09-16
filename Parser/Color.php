@@ -5,8 +5,9 @@
  *
  * @author Angel Sierra Vega <angel.sierra@grupoindie.com>
  * @copyright (CC) 2020 Angel Sierra Vega. Grupo INDIE.
+ * @license file://LICENSE
  *
- * @package GIndie\Common
+ * @package GIndie\Common\Parser
  *
  * @version 0B.80
  * @since 19-04-13
