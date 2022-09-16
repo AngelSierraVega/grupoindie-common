@@ -1,4 +1,5 @@
-# Common scripts. Contains general use scripts, parsers and handlers.
+# Common scripts.
+Contains general use scripts, parsers and handlers.
 
 ## GIndie\Common
 
